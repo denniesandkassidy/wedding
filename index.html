@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dennies & Kassidy!</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="output.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Waterfall&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    .hero-bg {
+      background-image: url('https://ucarecdn.com/42a1a793-8567-45f3-9e0a-18b8a1c45bb1/Weddingbackground.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh; /* Full viewport height */
+    }
+
+    /* Navbar Styling */
+    nav {
+    position: absolute;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    background: rgba(0, 0, 0, 0); /* Transparent for overlay effect */
+    transition: background-color 0.3s ease;
+    padding: 1rem 0;
+  }
+
+  .scrolled {
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: #ffd700;
+  }
+
+  /* Large screens: Show links */
+  .lg\:flex {
+    display: flex;
+  }
+
+  /* Hide mobile menu toggle on large screens */
+  #menu-toggle {
+    display: none;
+  }
+
+  /* iPad Pro and smaller screens: Hamburger Menu */
+  @media (max-width: 1366px) {
+    /* Hide large screen menu */
+    .lg\:flex {
+      display: none;
+    }
+
+    #menu-toggle {
+      display: block; /* Show the hamburger menu button */
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 75%;
+      background-color: rgba(0, 0, 0, 0.9); /* Dark background for better contrast */
+      padding: 1rem;
+      text-align: center;
+      transform: translateX(100%);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+      opacity: 1;
+      display: block;
+    }
+
+    .mobile-menu a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 1rem 0;
+    }
+
+    .mobile-menu a:hover {
+      color: #ffd700;
+    }
+  }
+
+    /* Hamburger button */
+    #menu-toggle {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      z-index: 60;
+    }
+
+    #menu-toggle svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    @media (max-width: 768px) {
+    nav {
+      padding: 2.0rem 1rem; /* Adjust as needed */
+    }
+    }
+
+    .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+      opacity: 0;
+      transform: translateX(100%); /* Start off the screen to the right */
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0); /* End at its original position */
+    }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="container mx-auto flex justify-center">
+
+      <!-- Menu for larger screens -->
+      <div class="hidden lg:flex space-x-8">
+        <a href="#Our-Story">Our Story</a>
+        <a href="#RSVP">RSVP</a>
+        <a href="#Gallery">Gallery</a>
+        <a href="#Ceremony-and-reception">Ceremony & Reception</a>
+        <a href="#Wedding-party">Wedding Party</a>
+        <a href="#Travel">Travel</a>
+        <a href="#Gift-registry">Gift Registry</a>
+        <a href="#Q-and-a">Q & A</a>
+      </div>
+
+    <!-- Hamburger for iPad Pro and smaller -->
+    <button id="menu-toggle" class="text-white focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+  </div>
+
+     <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden bg-gray-800 p-4 space-y-4 text-center text-white">
+    <a href="#Our-Story" class="block">Our Story</a>
+    <a href="#RSVP" class="block">RSVP</a>
+    <a href="#Gallery" class="block">Gallery</a>
+    <a href="#Ceremony-and-reception" class="block">Ceremony & Reception</a>
+    <a href="#Wedding-party" class="block">Wedding Party</a>
+    <a href="#Travel" class="block">Travel</a>
+    <a href="#Gift-registry" class="block">Gift Registry</a>
+    <a href="#Q-and-a" class="block">Q & A</a>
+  </div>
+  </nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero-bg flex items-center justify-center text-center text-white">
+  <div class="hero-overlay flex items-center justify-center w-full h-full">
+    <div class="p-10 sm:p-12 md:p-20 bg-opacity-0 rounded-lg max-w-md sm:max-w-lg md:max-w-2xl overflow-hidden">
+      <h1 class="text-8xl sm:text-9xl md:text-10xl font-bold mb-8 typing whitespace-normal" style="font-family: 'Waterfall', cursive;">
+        Dennies & Kassidy
+      </h1>
+      <!-- Countdown Timer -->
+      <div id="countdown" class="text-2xl sm:text-3xl md:text-4xl mt-8" style="font-family: 'Waterfall', cursive;">
+        Loading countdown...
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Countdown Function
+  function startCountdown() {
+    const weddingDate = new Date('2025-11-22T00:00:00').getTime();
+    const countdownElement = document.getElementById('countdown');
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const timeLeft = weddingDate - now;
+
+      if (timeLeft <= 0) {
+        countdownElement.innerHTML = "The day is here!";
+        clearInterval(countdownInterval);
+        return;
+      }
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
+    }
+
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  }
+
+  // Start the countdown
+  document.addEventListener('DOMContentLoaded', startCountdown);
+</script>
+
+
+  <!-- JavaScript for mobile menu toggle and navbar scroll effect -->
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      var menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('open');
+    });
+
+    // Change navbar behavior on scroll
+    window.addEventListener('scroll', function () {
+      var navbar = document.getElementById('navbar');
+      var heroSection = document.querySelector('.hero-bg');
+      var heroBottom = heroSection.offsetHeight;
+
+      if (window.scrollY < heroBottom) {
+        navbar.classList.remove('scrolled');
+      } else {
+        navbar.classList.add('scrolled');
+      }
+    });
+
+     // Mobile menu toggle with fade-in animation
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', function () {
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('fade-in');
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('fade-in');
+      }
+    });
+  </script>
+</body>
+</html>
+
+<!-- Our Story Section -->
+<section id="Our-Story" class="py-16 bg-gray-200">
+  <div class="container mx-auto px-4">
+    <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Our Story</h2>
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+      <!-- Image Section -->
+      <div class="w-full lg:w-1/2 mb-8 lg:mb-0 flex justify-center">
+        <img 
+          src="https://ucarecdn.com/818117f1-c911-488e-bd3e-431d4786fe6b/TennisPicture.jpg" 
+          alt="Our Story Image" 
+          class="w-full max-w-lg lg:max-w-xl object-cover" 
+          style="aspect-ratio: 16 / 9; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);"
+        >
+      </div>
+      
+      <!-- Text Section -->
+      <div class="w-full lg:w-1/2 text-left lg:text-left">
+        <div class="mx-auto lg:mx-0 lg:max-w-4xl">
+          <p class="text-lg leading-relaxed mb-4">It all began at Saint Joseph's University, where two ambitious double majors, Kassidy and Dennies, crossed paths on the club tennis team. Dennies, the team captain, couldn’t help but notice Kassidy’s charm both on and off the court. Their shared passion for tennis, accounting, and management information systems laid the foundation for a connection that quickly blossomed into something extraordinary.</p>
+
+          <p class="text-lg leading-relaxed mb-4">From study sessions to tennis matches, their bond deepened, and before long, Kassidy and Dennies became inseparable. After graduating magna cum laude together, life had more adventures in store. They navigated nearly six years of love, including 3.5 years of long-distance, living apart yet never far from each other’s hearts. Their journey took them across the country, from Philadelphia to San Francisco, and back again.</p>
+
+          <p class="text-lg leading-relaxed mb-4">Through it all, they grew their little family, adopting two adorable dogs, Oliver and Loki, who quickly became the center of their world. Then, on a sunny August 8th in the city where it all began, Dennies asked Kassidy the question she had been waiting for. Against the backdrop of Philadelphia's familiar streets, he popped the question—and she said yes!</p>
+
+          <p class="text-lg leading-relaxed mb-4">Now, as they prepare to start their next chapter together in the city that witnessed the beginning of their love story, Kassidy and Dennies can’t wait to celebrate their wedding day surrounded by the people who mean the most to them.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="Gallery" class="py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Gallery</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Picture 1 -->
+      <img src="https://ucarecdn.com/5f912776-093c-46d7-b42f-4eeb912c5ae9/GalleryPhoto1.jpg" alt="Project 1" class="bg-white p-6 rounded-lg shadow-lg block hover:shadow-xl transition-shadow">
+      <!-- Picture 2 -->
+      <img src="https://ucarecdn.com/e9a5e2a8-996a-4c23-900d-85043d0a888c/GalleryPhoto2.jpg" alt="Project 2" class="bg-white p-6 rounded-lg shadow-lg block hover:shadow-xl transition-shadow">
+      <!-- Picture 3 -->
+      <img src="https://ucarecdn.com/1d47049c-5b56-4782-a454-e14fbdb7fbc8/GalleryPhoto3.jpg" alt="Project 3" class="bg-white p-6 rounded-lg shadow-lg block hover:shadow-xl transition-shadow">
+    </div>
+    <!-- Button to navigate to full gallery -->
+    <div class="flex justify-center mt-8">
+      <a href="https://1drv.ms/a/s!AuBW6LXPmdYNgf8Ws3vWOMUnzgAp5A?e=ekZbzk" 
+         class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-blue-700 transition-colors">
+        View Full Gallery
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Ceremony & Reception Section -->
+<section id="Ceremony-and-reception" class="py-16 bg-gray-200">
+  <div class="container mx-auto px-4">
+    <!-- Title -->
+    <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Ceremony & Reception</h2>
+
+    <!-- Side-by-Side Picture and Google Maps -->
+    <div class="flex flex-col lg:flex-row lg:justify-center lg:gap-8 items-center mb-12">
+      <!-- Picture -->
+      <div class="w-full lg:w-1/2 flex justify-center mb-8 lg:mb-0"> <!-- Added margin-bottom for space -->
+        <img 
+          src="https://ucarecdn.com/638f4d58-dd3a-4904-b89f-69abf1a9f487/Museumpicturecopy.jpg" 
+          alt="Ceremony and Reception Venue" 
+          class="rounded-lg shadow-lg max-w-full lg:max-w-lg"
+        />
+      </div>
+      <!-- Google Maps Embed -->
+      <div class="w-full lg:w-1/2 flex justify-center mt-8 lg:mt-0"> <!-- Added margin-top for space -->
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6117.380273031807!2d-75.1483349878238!3d39.94832027139992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c884e23082ef%3A0x61032c3c5627d938!2sMuseum%20of%20the%20American%20Revolution!5e0!3m2!1sen!2sus!4v1733196906007!5m2!1sen!2sus" 
+          width="600" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          class="rounded-lg shadow-lg">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Details Section -->
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+      <!-- Text Section -->
+      <div class="w-full lg:w-1/2 text-center lg:text-center" style="font-family: 'Waterfall', cursive;">
+        <div class="mx-auto lg:mx-0 lg:max-w-4xl">
+          <p class="text-4xl leading-relaxed mb-4">Saturday, November 22, 2025</p>
+          <p class="text-4xl leading-relaxed mb-4">5:00 PM - 11:00 PM</p>
+          <p class="text-4xl leading-relaxed mb-4">Museum of the American Revolution</p>
+          <p class="text-4xl leading-relaxed mb-4">101 S 3rd St, Philadelphia, PA 19106</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button to view venue website -->
+    <div class="flex justify-center mt-8">
+      <a href="https://www.amrevmuseum.org/" 
+         class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-blue-700 transition-colors">
+        Venue Website
+      </a>
+    </div>
+
+    <!-- Button for directions -->
+    <div class="flex justify-center mt-8">
+      <a href="https://maps.app.goo.gl/5PVD4pGQEzT6yUYM9" 
+         class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-600 transition-colors">
+        Directions to Venue
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Travel Section -->
+<section id="Travel" class="py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Travel</h2>
+    
+    <!-- First Row (Original) -->
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+      <!-- Google Maps Embed -->
+      <div class="w-full lg:w-1/2 flex justify-center">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6117.058533267672!2d-75.15123179130856!3d39.95191799461205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c8851cb77ac7%3A0x4c811646519218c9!2sIndependence%20Park%20Hotel%2C%20BW%20Premier%20Collection!5e0!3m2!1sen!2sus!4v1733197301207!5m2!1sen!2sus" 
+          width="600" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          class="rounded-lg shadow-lg">
+        </iframe>
+      </div>
+      <!-- Text Section -->
+      <div class="w-full lg:w-1/2 text-center lg:text-left" style="font-family: 'Waterfall', cursive;">
+        <div class="mx-auto lg:mx-0 lg:max-w-4xl">
+          <p class="text-6xl leading-relaxed mb-4">Hotel</p>
+          <p class="text-4xl leading-relaxed mb-4">Independence Park Hotel, BW Premier Collection</p>
+          <p class="text-4xl leading-relaxed mb-4">235 Chestnut St, Philadelphia, PA 19106</p>
+        </div>
+        <!-- Button -->
+        <div class="flex justify-center lg:justify-start mt-6">
+          <a href="https://www.bestwestern.com/en_US/book/hotel-rooms.39125.html" 
+             class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-500 transition-colors font-sans">
+            Book Your Stay
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Space Between Rows -->
+    <div class="my-12"></div> <!-- This creates space between the two rows -->
+
+    <!-- Second Row (Duplicate) -->
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+      <!-- Google Maps Embed -->
+      <div class="w-full lg:w-1/2 flex justify-center">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6117.058533267672!2d-75.15123179130856!3d39.95191799461205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c8851cb77ac7%3A0x4c811646519218c9!2sIndependence%20Park%20Hotel%2C%20BW%20Premier%20Collection!5e0!3m2!1sen!2sus!4v1733197301207!5m2!1sen!2sus" 
+          width="600" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          class="rounded-lg shadow-lg">
+        </iframe>
+      </div>
+      <!-- Text Section -->
+      <div class="w-full lg:w-1/2 text-center lg:text-left" style="font-family: 'Waterfall', cursive;">
+        <div class="mx-auto lg:mx-0 lg:max-w-4xl">
+          <p class="text-6xl leading-relaxed mb-4">Hotel</p>
+          <p class="text-4xl leading-relaxed mb-4">Independence Park Hotel, BW Premier Collection</p>
+          <p class="text-4xl leading-relaxed mb-4">235 Chestnut St, Philadelphia, PA 19106</p>
+        </div>
+        <!-- Button -->
+        <div class="flex justify-center lg:justify-start mt-6">
+          <a href="https://www.bestwestern.com/en_US/book/hotel-rooms.39125.html" 
+             class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-500 transition-colors font-sans">
+            Book Your Stay
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Wedding Party Section -->
+<section id="Wedding-party" class="py-16 bg-gray-200">
+  <div class="container mx-auto px-4">
+    <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Wedding Party</h2>
+
+  </div>
+</section>
+
+<!-- Gift Registry Section -->
+<section id="Gift-registry" class="py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Gift Registry</h2>
+    <div class="mt-8 text-center">
+      <a href="https://www.dennieschung.com/bookshelf" 
+      class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-600 transition-colors">
+        Amazon
+      </a>
+      <a href="https://www.dennieschung.com/bookshelf" 
+      class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-600 transition-colors">
+        Anthropologie
+      </a>
+      <a href="https://www.dennieschung.com/bookshelf" 
+      class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-600 transition-colors">
+        Crate & Barrel
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Q&A Section -->
+<section id="Q-and-a" class="py-16 bg-gray-200">
+  <div class="container mx-auto px-4">
+    <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Q&A</h2>
+    <p class="text-lg text-center mb-4">Feel free to reach out through any of the following:</p>
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto text-center">
+      <div class="mb-4">
+        <a href="mailto:denniesandkassidy@gmail.com" class="flex items-center text-blue-600 hover:underline">
+          <img src="https://img.icons8.com/material-outlined/24/000000/gmail-new.png" alt="Email" class="w-6 h-6 mr-2"/>
+          denniesandkassidy@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
