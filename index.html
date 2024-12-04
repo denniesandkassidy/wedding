@@ -143,6 +143,29 @@
       transform: translateX(0); /* End at its original position */
     }
     }
+
+    /* Countdown Timer Styling */
+    #countdown {
+      font-family: 'Waterfall', cursive;
+      white-space: nowrap; /* Ensure the text stays on one line */
+      overflow: hidden; /* Hide any overflowing text */
+      text-overflow: ellipsis; /* Display ellipsis for overflowing text */
+      text-align: center;
+    }
+
+    /* Adjust font size for smaller screens */
+    @media (max-width: 768px) {
+      #countdown {
+        font-size: 2rem; /* Reduce font size for mobile */
+      }
+    }
+
+    @media (max-width: 480px) {
+      #countdown {
+        font-size: 1.5rem; /* Further reduce for very small screens */
+      }
+    }
+
   </style>
 </head>
 <body>
