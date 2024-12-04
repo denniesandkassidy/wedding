@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wedding RSVP</title>
+</head>
+<body>
+    <h1>Kassidy & Dennies' Wedding RSVP</h1>
+    <form name="contact" method="POST" data-netlify="true">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <button type="submit">Submit</button>
+      </form>      
+    
+    <script src="rsvp.js"></script>
+</body>
+</html>
+
+<script>
+document.getElementById("rsvpForm").addEventListener("change", function() {
+    const attending = document.querySelector('input[name="rsvp"]:checked').value;
+    document.getElementById("extraDetails").style.display = attending === "Accept" ? "block" : "none";
+});
+
+document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    console.log("RSVP Data:", data);
+    alert("Thank you for your RSVP!");
+    e.target.reset();
+});
+</script>
+
+<script>
+    const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
+app.use(bodyParser.json());
+
+let responses = [];
+
+app.post('/submit-rsvp', (req, res) => {
+    responses.push(req.body);
+    res.status(200).send({ message: "RSVP received!" });
+});
+
+app.get('/responses', (req, res) => {
+    res.status(200).send(responses);
+});
+
+app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+
+</script>
+
+<script>
+    const Airtable = require('airtable');
+
+// Configure Airtable
+const base = new Airtable({ apiKey: 'patSgbJYV2GRtdEJi' }).base('appVaNvXeuRaIo97P');
+
+// Endpoint to handle RSVP submissions
+app.post('/submit-rsvp', (req, res) => {
+    const { name, email, rsvp, meal, comments } = req.body;
+
+    // Validate inputs
+    if (!name || !email || !rsvp) {
+        return res.status(400).send({ message: 'Missing required fields.' });
+    }
+
+    // Add record to Airtable
+    base('RSVP Responses').create(
+        {
+            Name: name,
+            Email: email,
+            'RSVP Status': rsvp,
+            'Meal Preference': meal || 'None',
+            Comments: comments || 'N/A',
+        },
+        (err, record) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).send({ message: 'Failed to save RSVP to Airtable.' });
+            }
+            res.status(200).send({ message: 'RSVP successfully saved!' });
+        }
+    );
+});
+</script>
