@@ -138,7 +138,7 @@
         <form id="nameForm">
             <h1 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Kassidy & Dennies' Wedding RSVP</h1>
             <label for="name">Enter Your Name</label>
-            <input type="text" id="name" name="name" placeholder="Type your full name" required>
+            <input type="text" id="name" name="name" placeholder="Type your full name" required class="w-64">
             <button type="submit">Check RSVP</button>
             <p class="error" id="error"></p>
             <div class="match-buttons" id="matchButtons"></div>
@@ -146,18 +146,39 @@
         </form>
 
         <!-- RSVP Form -->
-        <div class="rsvp-form" id="rsvpForm">
-            <h1 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Kassidy & Dennies' Wedding RSVP</h1>
-            <form name="contact" method="POST" data-netlify="true" id="dynamicForm">
-                <label for="rsvpName">Name</label>
-                <input type="text" id="rsvpName" name="name" required placeholder="Enter your name" readonly>
+<div class="rsvp-form" id="rsvpForm">
+    <h1 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">
+        Kassidy & Dennies' Wedding RSVP
+    </h1>
+    <form name="contact" method="POST" data-netlify="true" id="dynamicForm">
+        <!-- Hidden Netlify Field -->
+        <input type="hidden" name="form-name" value="contact">
+        
+        <!-- Primary Guest Name Input -->
+        <label for="primaryGuestName">Your Name</label>
+        <input 
+            type="text" 
+            id="primaryGuestName" 
+            name="primaryGuestName" 
+            required 
+            placeholder="Enter your name">
+        
+        <!-- Additional Guests Input -->
+        <label for="guestNames">Additional Guests</label>
+        <textarea 
+            id="guestNames" 
+            name="guestNames" 
+            placeholder="Enter names of additional guests, separated by commas (e.g., John Doe, Jane Smith)">
+        </textarea>
+        
+        <!-- Dynamic Fields Container -->
+        <div id="dynamicFields" class="dynamic-fields"></div>
 
-                <div id="dynamicFields" class="dynamic-fields"></div>
-
-                <button type="submit">Submit RSVP</button>
-            </form>
-        </div>
-    </div>
+        <!-- Submit Button -->
+        <button type="button" id="generateFields">Generate Fields for Guests</button>
+        <button type="submit">Submit RSVP</button>
+    </form>
+</div>
 
     <script>
         // List of valid names
