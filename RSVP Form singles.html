@@ -89,8 +89,11 @@
 </head>
 <body>
     <div class="container">
-        <form id="rsvpForm">
+        <form id="rsvpForm" name="rsvpForm" method="POST" data-netlify="true">
             <h1>RSVP Form</h1>
+            <!-- Hidden Input for Form Identification -->
+            <input type="hidden" name="form-name" value="rsvpForm">
+
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your Name" required readonly>
 
