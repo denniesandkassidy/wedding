@@ -147,133 +147,113 @@
 
         <!-- RSVP Form -->
 <div class="rsvp-form" id="rsvpForm">
-    <h1 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">
-        Kassidy & Dennies' Wedding RSVP
-    </h1>
+    <h1 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Kassidy & Dennies' Wedding RSVP</h1>
     <form name="contact" method="POST" data-netlify="true" id="dynamicForm">
         <!-- Hidden Netlify Field -->
         <input type="hidden" name="form-name" value="contact">
-        
-        <!-- Primary Guest Name Input -->
-        <label for="primaryGuestName">Your Name</label>
-        <input 
-            type="text" 
-            id="primaryGuestName" 
-            name="primaryGuestName" 
-            required 
-            placeholder="Enter your name">
-        
-        <!-- Additional Guests Input -->
-        <label for="guestNames">Additional Guests</label>
-        <textarea 
-            id="guestNames" 
-            name="guestNames" 
-            placeholder="Enter names of additional guests, separated by commas (e.g., John Doe, Jane Smith)">
-        </textarea>
-        
-        <!-- Dynamic Fields Container -->
+
+        <label for="rsvpName">Name</label>
+        <input type="text" id="rsvpName" name="name" required placeholder="Enter your name" readonly>
+
         <div id="dynamicFields" class="dynamic-fields"></div>
 
-        <!-- Submit Button -->
-        <button type="button" id="generateFields">Generate Fields for Guests</button>
         <button type="submit">Submit RSVP</button>
     </form>
 </div>
 
-    <script>
-        // List of valid names
-        const validNames = ["Kassidy Jones", "Dennies Smith", "Oliver Brown", "Loki Wilson", "Dennies Smith & Kassidy"];
+<script>
+    // List of valid names
+    const validNames = ["Kassidy Jones", "Dennies Smith", "Oliver Brown", "Loki Wilson", "Dennies Smith & Kassidy"];
 
-        // Helper function to find similar matches
-        function findSimilarNames(input, names) {
-            const lowerInput = input.toLowerCase();
-            return names.filter(name => name.toLowerCase().includes(lowerInput));
+    // Helper function to find similar matches
+    function findSimilarNames(input, names) {
+        const lowerInput = input.toLowerCase();
+        return names.filter(name => name.toLowerCase().includes(lowerInput));
+    }
+
+    // Populate the name input with a match
+    function populateName(match) {
+        const nameForm = document.getElementById("nameForm");
+        const rsvpForm = document.getElementById("rsvpForm");
+        const matchButtonsElement = document.getElementById("matchButtons");
+        const suggestionsElement = document.getElementById("suggestions");
+        const dynamicFields = document.getElementById("dynamicFields");
+
+        nameForm.style.display = "none";
+        matchButtonsElement.innerHTML = "";
+        suggestionsElement.textContent = "";
+        rsvpForm.style.display = "block"; // Ensure RSVP form appears
+
+        document.getElementById("rsvpName").value = match;
+
+        dynamicFields.innerHTML = "";
+        if (match.includes("&")) {
+            const [name1, name2] = match.split("&").map(name => name.trim());
+
+            addDynamicFields(dynamicFields, name1);
+            addDynamicFields(dynamicFields, name2);
+        } else {
+            addDynamicFields(dynamicFields, match);
+        }
+    }
+
+    // Add dynamic fields for each person
+    function addDynamicFields(container, name) {
+        const safeName = name.replace(/\s+/g, '_'); // Replace spaces with underscores for unique field names
+        container.innerHTML += `
+            <label for="attendance_${safeName}">Will ${name} be attending this event?</label>
+            <select id="attendance_${safeName}" name="attendance_${safeName}" required>
+                <option value="">Select an option</option>
+                <option value="Attending">Attending</option>
+                <option value="Not Attending">Not Attending</option>
+            </select>
+
+            <label for="entree_${safeName}">Please Select ${name}'s Entree</label>
+            <select id="entree_${safeName}" name="entree_${safeName}" required>
+                <option value="">Select an entree</option>
+                <option value="Fish">Fish</option>
+                <option value="Steak">Steak</option>
+            </select>
+
+            <label for="dietary_${safeName}">Please provide any dietary restrictions or allergies for ${name}</label>
+            <textarea id="dietary_${safeName}" name="dietary_${safeName}" placeholder="Enter details"></textarea>
+
+            <label for="comments_${safeName}">Any comments, questions, or concerns for ${name}?</label>
+            <textarea id="comments_${safeName}" name="comments_${safeName}" placeholder="Enter details"></textarea>
+        `;
+    }
+
+    // Form submit event handler
+    document.getElementById("nameForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const nameInput = document.getElementById("name").value.trim();
+        const errorElement = document.getElementById("error");
+        const suggestionsElement = document.getElementById("suggestions");
+        const matchButtonsElement = document.getElementById("matchButtons");
+
+        errorElement.textContent = "";
+        suggestionsElement.textContent = "";
+        matchButtonsElement.innerHTML = "";
+
+        if (validNames.includes(nameInput)) {
+            populateName(nameInput);
+            return;
         }
 
-        // Populate the name input with a match
-        function populateName(match) {
-            const nameForm = document.getElementById("nameForm");
-            const rsvpForm = document.getElementById("rsvpForm");
-            const matchButtonsElement = document.getElementById("matchButtons");
-            const suggestionsElement = document.getElementById("suggestions");
-            const dynamicFields = document.getElementById("dynamicFields");
+        const matches = findSimilarNames(nameInput, validNames);
 
-            nameForm.style.display = "none";
-            matchButtonsElement.innerHTML = "";
-            suggestionsElement.textContent = "";
-            rsvpForm.style.display = "block"; // Ensure RSVP form appears
-
-            document.getElementById("rsvpName").value = match;
-
-            dynamicFields.innerHTML = "";
-            if (match.includes("&")) {
-                const [name1, name2] = match.split("&").map(name => name.trim());
-
-                addDynamicFields(dynamicFields, name1);
-                addDynamicFields(dynamicFields, name2);
-            } else {
-                addDynamicFields(dynamicFields, match);
-            }
+        if (matches.length > 0) {
+            suggestionsElement.textContent = "Did you mean one of these?";
+            matches.forEach(match => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.textContent = match;
+                button.addEventListener("click", () => populateName(match));
+                matchButtonsElement.appendChild(button);
+            });
+        } else {
+            errorElement.textContent = "No match found. Please make sure your name is spelled correctly.";
         }
-
-        // Add dynamic fields for each person
-        function addDynamicFields(container, name) {
-            container.innerHTML += `
-                <label for="attendance_${name}">Will ${name} be attending this event?</label>
-                <select id="attendance_${name}" name="attendance_${name}" required>
-                    <option value="">Select an option</option>
-                    <option value="Attending">Attending</option>
-                    <option value="Not Attending">Not Attending</option>
-                </select>
-
-                <label for="entree_${name}">Please Select ${name}'s Entree</label>
-                <select id="entree_${name}" name="entree_${name}" required>
-                    <option value="">Select an entree</option>
-                    <option value="Fish">Fish</option>
-                    <option value="Steak">Steak</option>
-                </select>
-
-                <label for="dietary_${name}">Please provide any dietary restrictions or allergies for ${name}</label>
-                <textarea id="dietary_${name}" name="dietary_${name}" placeholder="Enter details"></textarea>
-
-                <label for="comments_${name}">Any comments, questions, or concerns for ${name}?</label>
-                <textarea id="comments_${name}" name="comments_${name}" placeholder="Enter details"></textarea>
-            `;
-        }
-
-        // Form submit event handler
-        document.getElementById("nameForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const nameInput = document.getElementById("name").value.trim();
-            const errorElement = document.getElementById("error");
-            const suggestionsElement = document.getElementById("suggestions");
-            const matchButtonsElement = document.getElementById("matchButtons");
-
-            errorElement.textContent = "";
-            suggestionsElement.textContent = "";
-            matchButtonsElement.innerHTML = "";
-
-            if (validNames.includes(nameInput)) {
-                populateName(nameInput);
-                return;
-            }
-
-            const matches = findSimilarNames(nameInput, validNames);
-
-            if (matches.length > 0) {
-                suggestionsElement.textContent = "Did you mean one of these?";
-                matches.forEach(match => {
-                    const button = document.createElement("button");
-                    button.type = "button";
-                    button.textContent = match;
-                    button.addEventListener("click", () => populateName(match));
-                    matchButtonsElement.appendChild(button);
-                });
-            } else {
-                errorElement.textContent = "No match found. Please make sure your name is spelled correctly.";
-            }
-        });
-    </script>
-</body>
-</html>
+    });
+</script>
