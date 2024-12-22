@@ -145,19 +145,17 @@
             <p class="suggestions" id="suggestions"></p>
         </form>
 
-<!-- RSVP Form -->
+        <!-- RSVP Form -->
 <div class="rsvp-form" id="rsvpForm">
     <h1 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Kassidy & Dennies' Wedding RSVP</h1>
-    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="dynamicForm">
-        <!-- Hidden Netlify Fields -->
+    <form name="contact" method="POST" data-netlify="true" id="dynamicForm">
         <input type="hidden" name="form-name" value="contact">
-        <input type="hidden" name="bot-field">
-
+    
         <label for="rsvpName">Name</label>
         <input type="text" id="rsvpName" name="name" required placeholder="Enter your name" readonly>
-
+    
         <div id="dynamicFields" class="dynamic-fields"></div>
-
+    
         <button type="submit">Submit RSVP</button>
     </form>
 </div>
@@ -202,25 +200,25 @@
     function addDynamicFields(container, name) {
         const safeName = name.replace(/\s+/g, '_'); // Replace spaces with underscores for unique field names
         container.innerHTML += `
-            <label for="attendance_${safeName}">Will ${name} be attending this event?</label>
-            <select id="attendance_${safeName}" name="attendance_${safeName}" required>
+            <label for="attendance_${name}">Will ${name} be attending this event?</label>
+            <select id="attendance_${name}" name="attendance_${name}" required>
                 <option value="">Select an option</option>
                 <option value="Attending">Attending</option>
                 <option value="Not Attending">Not Attending</option>
             </select>
 
-            <label for="entree_${safeName}">Please Select ${name}'s Entree</label>
-            <select id="entree_${safeName}" name="entree_${safeName}" required>
+            <label for="entree_${name}">Please Select ${name}'s Entree</label>
+            <select id="entree_${name}" name="entree_${name}" required>
                 <option value="">Select an entree</option>
                 <option value="Fish">Fish</option>
                 <option value="Steak">Steak</option>
             </select>
 
-            <label for="dietary_${safeName}">Please provide any dietary restrictions or allergies for ${name}</label>
-            <textarea id="dietary_${safeName}" name="dietary_${safeName}" placeholder="Enter details"></textarea>
+            <label for="dietary_${name}">Please provide any dietary restrictions or allergies for ${name}</label>
+            <textarea id="dietary_${name}" name="dietary_${name}" placeholder="Enter details"></textarea>
 
-            <label for="comments_${safeName}">Any comments, questions, or concerns for ${name}?</label>
-            <textarea id="comments_${safeName}" name="comments_${safeName}" placeholder="Enter details"></textarea>
+            <label for="comments_${name}">Any comments, questions, or concerns for ${name}?</label>
+            <textarea id="comments_${name}" name="comments_${name}" placeholder="Enter details"></textarea>
         `;
     }
 
