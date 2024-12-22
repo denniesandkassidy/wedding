@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kassidy & Dennies' Wedding RSVP</title>
+    <title>RSVP Name Validation</title>
     <style>
         /* General Styling */
         body {
@@ -26,37 +26,44 @@
 
         /* Container Styling */
         .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             width: 100%;
-            max-width: 600px;
-            background-color: #fff;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent background */
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             padding: 30px;
         }
 
-        /* Form Elements */
+        /* Input Fields */
         label {
             font-size: 1.1rem;
             color: #555;
             margin-bottom: 8px;
-            display: block;
+            align-self: flex-start;
         }
 
-        input, textarea, select {
+        input {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             font-size: 1rem;
             margin-bottom: 15px;
-            border: 1px solid #ccc;
+            border: 2px solid #ccc;
             border-radius: 8px;
             background-color: #f9f9f9;
+            transition: border-color 0.3s ease-in-out;
         }
 
-        input:focus, textarea:focus, select:focus {
+        /* Focus Styles */
+        input:focus {
             border-color: #0073e6;
             outline: none;
         }
 
+        /* Buttons */
         button {
             width: 100%;
             padding: 14px;
@@ -72,91 +79,131 @@
         button:hover {
             background-color: #005bb5;
         }
+
+        /* Error & Suggestions */
+        .error {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .suggestions {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #333;
+            text-align: center;
+        }
+
+        .match-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .match-buttons button {
+            background-color: rgba(83, 83, 83, 0.8); /* Semi-transparent background */
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .match-buttons button:hover {
+            background-color: rgb(114, 0, 0);
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <form name="contact" method="POST" data-netlify="true" id="dynamicForm">
-            <!-- Hidden Netlify Field -->
-            <input type="hidden" name="form-name" value="contact">
-
-            <!-- Primary Guest -->
+        <form id="nameForm">
             <h1>Kassidy & Dennies' Wedding RSVP</h1>
-            <label for="rsvpName">Your Name</label>
-            <input type="text" id="rsvpName" name="rsvpName" required placeholder="Enter your name">
-
-            <!-- Placeholder Fields for Up to 5 Guests -->
-            <!-- Guest 1 -->
-            <div id="guest1">
-                <input type="hidden" name="guest1_name" id="guest1_name">
-                <label for="guest1_attendance">Will Guest 1 be attending?</label>
-                <select name="guest1_attendance" id="guest1_attendance">
-                    <option value="">Select an option</option>
-                    <option value="Attending">Attending</option>
-                    <option value="Not Attending">Not Attending</option>
-                </select>
-
-                <label for="guest1_entree">Guest 1's Entree</label>
-                <select name="guest1_entree" id="guest1_entree">
-                    <option value="">Select an entree</option>
-                    <option value="Fish">Fish</option>
-                    <option value="Steak">Steak</option>
-                </select>
-
-                <label for="guest1_dietary">Guest 1 Dietary Restrictions</label>
-                <textarea name="guest1_dietary" id="guest1_dietary" placeholder="Enter details"></textarea>
-            </div>
-
-            <!-- Guest 2 -->
-            <div id="guest2">
-                <input type="hidden" name="guest2_name" id="guest2_name">
-                <label for="guest2_attendance">Will Guest 2 be attending?</label>
-                <select name="guest2_attendance" id="guest2_attendance">
-                    <option value="">Select an option</option>
-                    <option value="Attending">Attending</option>
-                    <option value="Not Attending">Not Attending</option>
-                </select>
-
-                <label for="guest2_entree">Guest 2's Entree</label>
-                <select name="guest2_entree" id="guest2_entree">
-                    <option value="">Select an entree</option>
-                    <option value="Fish">Fish</option>
-                    <option value="Steak">Steak</option>
-                </select>
-
-                <label for="guest2_dietary">Guest 2 Dietary Restrictions</label>
-                <textarea name="guest2_dietary" id="guest2_dietary" placeholder="Enter details"></textarea>
-            </div>
-
-            <!-- Add similar divs for Guest 3, Guest 4, and Guest 5 -->
-
-            <!-- Submit Button -->
-            <button type="submit">Submit RSVP</button>
+            <label for="name">Enter Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Type your full name" required>
+            <button type="submit">Check RSVP</button>
+            <p class="error" id="error"></p>
+            <div class="match-buttons" id="matchButtons"></div>
+            <p class="suggestions" id="suggestions"></p>
         </form>
     </div>
 
     <script>
-        // Example Function to Populate Guest Fields
-        function populateGuestFields(guests) {
-            guests.forEach((guest, index) => {
-                const guestNumber = index + 1;
-                if (guestNumber > 5) return; // Limit to 5 guests
+        // List of valid names for singles
+        const validNames = ["Kassidy Rumpf", "Dennies Chung", "Oliver Chung", "Loki Chung"];
+        
+        // List of valid names for couples
+        const validNames2 = ["John Rody & Amanda Tallon", "Loki & Oliver", "Dennies & Kassidy"];
 
-                // Populate fields for each guest
-                document.getElementById(`guest${guestNumber}_name`).value = guest.name;
-
-                // Optionally auto-fill other fields
-                // document.getElementById(`guest${guestNumber}_attendance`).value = "Attending";
-                // document.getElementById(`guest${guestNumber}_entree`).value = "Fish";
-            });
+        // Helper function to find similar matches
+        function findSimilarNames(input, names) {
+            const lowerInput = input.toLowerCase();
+            return names.filter(name => name.toLowerCase().includes(lowerInput));
         }
 
-        // Example Usage
-        const guestList = [
-            { name: "John Doe" },
-            { name: "Jane Smith" },
-        ];
-        populateGuestFields(guestList);
+        // Redirect to RSVP Form Singles.html if name matches validNames
+        function redirectToRSVPSingles(name) {
+            window.location.href = "RSVP Form Singles.html?name=" + encodeURIComponent(name);
+        }
+
+        // Redirect to RSVP Form Couples.html if name matches validNames2
+        function redirectToRSVPCouples(name) {
+            window.location.href = "RSVP Form Couples.html?name=" + encodeURIComponent(name);
+        }
+
+        // Form submit event handler
+        document.getElementById("nameForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const nameInput = document.getElementById("name").value.trim();
+            const errorElement = document.getElementById("error");
+            const suggestionsElement = document.getElementById("suggestions");
+            const matchButtonsElement = document.getElementById("matchButtons");
+
+            errorElement.textContent = "";
+            suggestionsElement.textContent = "";
+            matchButtonsElement.innerHTML = "";
+
+            // Check if the name is in validNames
+            if (validNames.includes(nameInput)) {
+                redirectToRSVPSingles(nameInput);
+                return;
+            }
+
+            // Check if the name is in validNames2
+            if (validNames2.includes(nameInput)) {
+                redirectToRSVPCouples(nameInput);
+                return;
+            }
+
+            const matches = findSimilarNames(nameInput, validNames.concat(validNames2));
+
+            if (matches.length > 0) {
+                suggestionsElement.textContent = "Did you mean one of these?";
+                matches.forEach(match => {
+                    const button = document.createElement("button");
+                    button.type = "button";
+                    button.textContent = match;
+                    if (validNames.includes(match)) {
+                        button.addEventListener("click", function () {
+                            redirectToRSVPSingles(match);
+                        });
+                    } else {
+                        button.addEventListener("click", function () {
+                            redirectToRSVPCouples(match);
+                        });
+                    }
+                    matchButtonsElement.appendChild(button);
+                });
+            } else {
+                errorElement.textContent = "No match found. Please make sure your name is spelled correctly.";
+            }
+        });
     </script>
 </body>
 </html>
