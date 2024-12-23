@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dennies & Kassidy's RSVP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://ucarecdn.com/8464631e-8b52-4de3-b2c3-dd1ee0b1bffe/788F221B69F949EC8D3D7BD05F3EC49B.jpg') center center / cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            max-height: 90vh; /* Allow the form to take up most of the screen */
+            overflow-y: auto; /* Enable scrolling if content exceeds the container's height */
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 1rem;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"], select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        .guest-field, .guest2-fields {
+            display: none;
+        }
+
+        .guest-label, .guest2-label {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: -10px;
+        }
+
+        /* Add margin-top to the guest name field to create space */
+        .guest-field {
+            margin-top: 15px; /* Space between checkbox and guest name input */
+        }
+
+        /* Add margin between the checkbox and the submit button */
+        .checkbox-container {
+            margin-bottom: 20px; /* Space between the checkbox and button */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="rsvpFormSinglesGuests" name="rsvpFormSinglesGuests" method="POST" data-netlify="true">
+            <h1 class="text-8xl sm:text-9xl md:text-10xl font-bold mb-4 typing whitespace-normal" 
+          style="font-family: 'Waterfall', cursive;">Dennies & Kassidy's Wedding RSVP</h1>
+            <input type="hidden" name="form-name" value="rsvpFormSinglesGuests">
+
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required readonly>
+
+            <label for="attendance">Will you be attending this event?</label>
+            <select id="attendance" name="attendance" required>
+                <option value="">Select an option</option>
+                <option value="Attending">Attending</option>
+                <option value="Not Attending">Not Attending</option>
+            </select>
+
+            <label for="entree">Please Select your Entree</label>
+            <select id="entree" name="entree" required>
+                <option value="">Select an entree</option>
+                <option value="Fish">Fish</option>
+                <option value="Steak">Steak</option>
+            </select>
+
+            <label for="dietary">Please provide any dietary restrictions or allergies</label>
+            <textarea id="dietary" name="dietary" placeholder="Enter details"></textarea>
+
+            <label for="comments">Any comments, questions, or concerns?</label>
+            <textarea id="comments" name="comments" placeholder="Enter details"></textarea>
+
+            <label>
+                <input type="checkbox" id="bringGuest" name="bringGuest"> Will you be bringing a guest?
+            </label>
+
+            <!-- Guest 1 Section -->
+            <div id="guestField" class="guest-field">
+                <label for="guestName" class="guest-label">Guest's Name</label>
+                <input type="text" id="guestName" name="guestName" placeholder="Enter your guest's name">
+            </div>
+
+            <!-- Guest 2 Section -->
+            <div id="guest2Fields" class="guest2-fields">
+                <label for="guest2-entree">Please Select Guest 2's Entree</label>
+                <select id="guest2-entree" name="guest2-entree" required>
+                    <option value="">Select an entree</option>
+                    <option value="Fish">Fish</option>
+                    <option value="Steak">Steak</option>
+                </select>
+
+                <label for="guest2-dietary">Guest 2's Dietary Restrictions or Allergies</label>
+                <textarea id="guest2-dietary" name="guest2-dietary" placeholder="Enter details"></textarea>
+
+                <label for="guest2-comments">Guest 2's Comments, Questions, or Concerns</label>
+                <textarea id="guest2-comments" name="guest2-comments" placeholder="Enter details"></textarea>
+            </div>
+
+            <!-- Wrap checkbox and button in a container to create space between them -->
+            <div class="checkbox-container">
+                <button type="submit">Submit RSVP</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Retrieve the name from the query string
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        if (name) {
+            document.getElementById('name').value = name;
+        }
+
+        // Guest checkbox logic
+        const bringGuestCheckbox = document.getElementById("bringGuest");
+        const guestField = document.getElementById("guestField");
+        const guest2Fields = document.getElementById("guest2Fields");
+        const guestNameInput = document.getElementById("guestName");
+
+        bringGuestCheckbox.addEventListener("change", function () {
+            if (bringGuestCheckbox.checked) {
+                guestField.style.display = "block";
+                guest2Fields.style.display = "block"; // Show guest 2 fields when checkbox is checked
+                guestNameInput.required = true;
+            } else {
+                guestField.style.display = "none";
+                guest2Fields.style.display = "none"; // Hide guest 2 fields when checkbox is unchecked
+                guestNameInput.required = false;
+                guestNameInput.value = ""; // Clear the field when unchecked
+            }
+        });
+
+        // Form submission example
+        document.getElementById("rsvpFormSinglesGuests").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const guestInfo = bringGuestCheckbox.checked
+                ? `Guest's Name: ${guestNameInput.value.trim()}`
+                : "No guest is being brought.";
+
+            alert(`RSVP Submitted\nName: ${name}\n${guestInfo}`);
+        });
+    </script>
+</body>
+</html>
