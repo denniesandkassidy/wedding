@@ -23,8 +23,8 @@
             max-width: 500px;
             width: 100%;
             text-align: center;
-            max-height: 90vh; /* Allow the form to take up most of the screen */
-            overflow-y: auto; /* Enable scrolling if content exceeds the container's height */
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         h1 {
@@ -63,24 +63,18 @@
             background-color: #005bb5;
         }
 
-        .guest-field, .guest2-fields {
-            display: none;
+        .guest-field, .entree-field, .dietary-field, .comments-field {
+            display: none; /* Initially hide these fields */
         }
 
-        .guest-label, .guest2-label {
+        .guest-label {
             font-size: 0.9rem;
             color: #555;
             margin-top: -10px;
         }
 
-        /* Add margin-top to the guest name field to create space */
-        .guest-field {
-            margin-top: 15px; /* Space between checkbox and guest name input */
-        }
-
-        /* Add margin between the checkbox and the submit button */
         .checkbox-container {
-            margin-bottom: 20px; /* Space between the checkbox and button */
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -100,7 +94,7 @@
                 <option value="Attending">Attending</option>
                 <option value="Not Attending">Not Attending</option>
             </select>
-
+        
             <label for="entree">Please Select your Entree</label>
             <select id="entree" name="entree" required>
                 <option value="">Select an entree</option>
@@ -113,31 +107,36 @@
 
             <label for="comments">Any comments, questions, or concerns?</label>
             <textarea id="comments" name="comments" placeholder="Enter details"></textarea>
-
             <label>
                 <input type="checkbox" id="bringGuest" name="bringGuest"> Will you be bringing a guest?
             </label>
 
-            <!-- Guest 1 Section -->
+            <!-- Guest Name Section -->
             <div id="guestField" class="guest-field">
                 <label for="guestName" class="guest-label">Guest's Name</label>
                 <input type="text" id="guestName" name="guestName" placeholder="Enter your guest's name">
             </div>
 
-            <!-- Guest 2 Section -->
-            <div id="guest2Fields" class="guest2-fields">
-                <label for="guest2-entree">Please Select Guest 2's Entree</label>
-                <select id="guest2-entree" name="guest2-entree" required>
+            <!-- Entree Section -->
+            <div id="entreeField" class="entree-field">
+                <label for="entree">Please Select your Entree</label>
+                <select id="entree" name="entree" required>
                     <option value="">Select an entree</option>
                     <option value="Fish">Fish</option>
                     <option value="Steak">Steak</option>
                 </select>
+            </div>
 
-                <label for="guest2-dietary">Guest 2's Dietary Restrictions or Allergies</label>
-                <textarea id="guest2-dietary" name="guest2-dietary" placeholder="Enter details"></textarea>
+            <!-- Dietary Restrictions Section -->
+            <div id="dietaryField" class="dietary-field">
+                <label for="dietary">Please provide any dietary restrictions or allergies</label>
+                <textarea id="dietary" name="dietary" placeholder="Enter details"></textarea>
+            </div>
 
-                <label for="guest2-comments">Guest 2's Comments, Questions, or Concerns</label>
-                <textarea id="guest2-comments" name="guest2-comments" placeholder="Enter details"></textarea>
+            <!-- Comments Section -->
+            <div id="commentsField" class="comments-field">
+                <label for="comments">Any comments, questions, or concerns?</label>
+                <textarea id="comments" name="comments" placeholder="Enter details"></textarea>
             </div>
 
             <!-- Wrap checkbox and button in a container to create space between them -->
@@ -158,19 +157,21 @@
         // Guest checkbox logic
         const bringGuestCheckbox = document.getElementById("bringGuest");
         const guestField = document.getElementById("guestField");
-        const guest2Fields = document.getElementById("guest2Fields");
-        const guestNameInput = document.getElementById("guestName");
+        const entreeField = document.getElementById("entreeField");
+        const dietaryField = document.getElementById("dietaryField");
+        const commentsField = document.getElementById("commentsField");
 
         bringGuestCheckbox.addEventListener("change", function () {
             if (bringGuestCheckbox.checked) {
                 guestField.style.display = "block";
-                guest2Fields.style.display = "block"; // Show guest 2 fields when checkbox is checked
-                guestNameInput.required = true;
+                entreeField.style.display = "block";
+                dietaryField.style.display = "block";
+                commentsField.style.display = "block";
             } else {
                 guestField.style.display = "none";
-                guest2Fields.style.display = "none"; // Hide guest 2 fields when checkbox is unchecked
-                guestNameInput.required = false;
-                guestNameInput.value = ""; // Clear the field when unchecked
+                entreeField.style.display = "none";
+                dietaryField.style.display = "none";
+                commentsField.style.display = "none";
             }
         });
 
@@ -179,7 +180,7 @@
             e.preventDefault();
 
             const guestInfo = bringGuestCheckbox.checked
-                ? `Guest's Name: ${guestNameInput.value.trim()}`
+                ? `Guest's Name: ${document.getElementById("guestName").value.trim()}`
                 : "No guest is being brought.";
 
             alert(`RSVP Submitted\nName: ${name}\n${guestInfo}`);
