@@ -63,16 +63,6 @@
             background-color: #005bb5;
         }
 
-        .guest-field, .entree-field, .dietary-field, .comments-field {
-            display: none; /* Initially hide these fields */
-        }
-
-        .guest-label {
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: -10px;
-        }
-
         .checkbox-container {
             margin-bottom: 20px;
         }
@@ -96,7 +86,7 @@
             </select>
         
             <label for="entree">Please Select your Entree</label>
-            <select id="entree" name="entree">
+            <select id="entree" name="entree" required>
                 <option value="">Select an entree</option>
                 <option value="Fish">Fish</option>
                 <option value="Steak">Steak</option>
@@ -107,8 +97,9 @@
 
             <label for="comments">Any comments, questions, or concerns?</label>
             <textarea id="comments" name="comments" placeholder="Enter details"></textarea>
+            
             <label>
-                <input type="checkbox" id="bringGuest" name="bringGuest"> Will you be bringing a guest?
+                <input type="checkbox" id="bringGuest" name="bringGuest" checked> Will you be bringing a guest?
             </label>
 
             <!-- Guest Name Section -->
@@ -120,7 +111,7 @@
             <!-- Entree Section -->
             <div id="entreeField" class="entree-field">
                 <label for="entree">Please Select your Entree</label>
-                <select id="entree" name="entree">
+                <select id="entree" name="entree" required>
                     <option value="">Select an entree</option>
                     <option value="Fish">Fish</option>
                     <option value="Steak">Steak</option>
@@ -145,60 +136,5 @@
             </div>
         </form>
     </div>
-
-    <script>
-        // Retrieve the name from the query string
-        const urlParams = new URLSearchParams(window.location.search);
-        const name = urlParams.get('name');
-        if (name) {
-            document.getElementById('name').value = name;
-        }
-
-        // Guest checkbox logic
-        const bringGuestCheckbox = document.getElementById("bringGuest");
-        const guestField = document.getElementById("guestField");
-        const entreeField = document.getElementById("entreeField");
-        const dietaryField = document.getElementById("dietaryField");
-        const commentsField = document.getElementById("commentsField");
-
-        bringGuestCheckbox.addEventListener("change", function () {
-            if (bringGuestCheckbox.checked) {
-                guestField.style.display = "block";
-                entreeField.style.display = "block";
-                dietaryField.style.display = "block";
-                commentsField.style.display = "block";
-            } else {
-                guestField.style.display = "none";
-                entreeField.style.display = "none";
-                dietaryField.style.display = "none";
-                commentsField.style.display = "none";
-            }
-        });
-
-        // Form submission example
-        document.getElementById("rsvpFormSinglesGuests").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            // Collect all the values, even hidden ones
-            const formData = new FormData(this);
-
-            // Check if the guest checkbox is checked and include the guest info
-            const guestInfo = bringGuestCheckbox.checked
-                ? `Guest's Name: ${document.getElementById("guestName").value.trim()}`
-                : "No guest is being brought.";
-
-            const entree = formData.get("entree");
-            const dietary = formData.get("dietary");
-            const comments = formData.get("comments");
-
-            // Display the values in an alert
-            let message = `RSVP Submitted\nName: ${name}\nAttendance: ${formData.get("attendance")}\n${guestInfo}`;
-            if (entree) message += `\nEntree: ${entree}`;
-            if (dietary) message += `\nDietary Restrictions: ${dietary}`;
-            if (comments) message += `\nComments: ${comments}`;
-
-            alert(message);
-        });
-    </script>
 </body>
 </html>
