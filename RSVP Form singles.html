@@ -15,15 +15,18 @@
             height: 100vh;
             margin: 0;
             padding: 20px;
+            overflow: hidden; /* Prevents the body from scrolling */
         }
 
         .container {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Ensures content starts from the top */
             align-items: center;
             width: 100%;
             max-width: 500px;
+            height: 80vh; /* Fixed height for the container */
+            overflow-y: auto; /* Allows scrolling if content exceeds container height */
             background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent background */
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -46,15 +49,16 @@
         }
 
         /* Input Styling */
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            font-size: 1rem;
-            margin-bottom: 15px;
+        input[type="text"], select, textarea {
+            width: 100%; /* Set width to 100% to match the button */
+            padding: 14px; /* Increased padding for better spacing */
+            font-size: 1.1rem; /* Larger text for input fields */
+            margin-bottom: 18px; /* Increased margin for better spacing */
             border: 2px solid #ccc;
             border-radius: 8px;
             background-color: #f9f9f9;
             transition: border-color 0.3s ease-in-out;
+            box-sizing: border-box; /* Ensures padding and border are included in width */
         }
 
         /* Focus Styles */
@@ -71,9 +75,9 @@
 
         /* Button Styling */
         button {
-            width: 100%;
-            padding: 14px;
-            font-size: 1.1rem;
+            width: 100%; /* Button takes up 100% width */
+            padding: 16px;
+            font-size: 1.2rem; /* Larger text on the button */
             color: white;
             background-color: #0073e6;
             border: none;
@@ -91,7 +95,7 @@
     <div class="container">
         <form id="rsvpFormSingles" name="rsvpFormSingles" method="POST" data-netlify="true">
             <h1 class="text-8xl sm:text-9xl md:text-10xl font-bold mb-4 typing whitespace-normal" 
-          style="font-family: 'Waterfall', cursive;">Dennies & Kassidy's Wedding RSVP</h1>
+            style="font-family: 'Waterfall', cursive;">Dennies & Kassidy's Wedding RSVP</h1>
             <!-- Hidden Input for Form Identification -->
             <input type="hidden" name="form-name" value="rsvpFormSingles">
 

@@ -51,8 +51,8 @@
         }
 
         /* Input Styling */
-        input, select, textarea {
-            width: 100%;
+        input[type="text"], select, textarea {
+            width: 100%; /* Set width to 100% to match the button */
             padding: 14px; /* Increased padding for better spacing */
             font-size: 1.1rem; /* Larger text for input fields */
             margin-bottom: 18px; /* Increased margin for better spacing */
@@ -60,6 +60,7 @@
             border-radius: 8px;
             background-color: #f9f9f9;
             transition: border-color 0.3s ease-in-out;
+            box-sizing: border-box; /* Ensures padding and border are included in width */
         }
 
         /* Focus Styles */

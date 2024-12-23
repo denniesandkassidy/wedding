@@ -46,19 +46,20 @@
             align-self: flex-start;
         }
 
-        input {
-            width: 100%;
-            padding: 14px;
-            font-size: 1rem;
-            margin-bottom: 15px;
+        input[type="text"], select, textarea {
+            width: 100%; /* Set width to 100% to match the button */
+            padding: 14px; /* Increased padding for better spacing */
+            font-size: 1.1rem; /* Larger text for input fields */
+            margin-bottom: 18px; /* Increased margin for better spacing */
             border: 2px solid #ccc;
             border-radius: 8px;
             background-color: #f9f9f9;
             transition: border-color 0.3s ease-in-out;
+            box-sizing: border-box; /* Ensures padding and border are included in width */
         }
 
         /* Focus Styles */
-        input:focus {
+        input:focus, select:focus, textarea:focus {
             border-color: #0073e6;
             outline: none;
         }
