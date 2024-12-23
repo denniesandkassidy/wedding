@@ -25,58 +25,51 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      height: 100vh; /* Full viewport height */
+      height: 100vh;
     }
 
     /* Navbar Styling */
     nav {
-    position: absolute;
-    top: 0;
-    z-index: 50;
-    width: 100%;
-    background: rgba(0, 0, 0, 0); /* Transparent for overlay effect */
-    transition: background-color 0.3s ease;
-    padding: 1rem 0;
-  }
+      position: absolute;
+      top: 0;
+      z-index: 50;
+      width: 100%;
+      background: rgba(0, 0, 0, 0); /* Transparent background by default */
+      transition: background-color 0.3s ease;
+      padding: 1rem 0;
+    }
 
-  .scrolled {
-    position: sticky;
-    top: 0;
-    background: rgba(0, 0, 0, 0.9);
-  }
+    /* Sticky black navbar on desktop */
+    @media (min-width: 769px) {
+      .scrolled {
+        position: sticky;
+        top: 0;
+        background: rgba(0, 0, 0, 0.9); /* Black background when scrolled */
+      }
+    }
 
-  nav a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: color 0.3s ease;
-  }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
+    }
 
-  nav a:hover {
-    color: #ffd700;
-  }
+    nav a:hover {
+      color: #ffd700;
+    }
 
-  /* Large screens: Show links */
-  .lg\:flex {
-    display: flex;
-  }
-
-  /* Hide mobile menu toggle on large screens */
-  #menu-toggle {
-    display: none;
-  }
-
-  /* iPad Pro and smaller screens: Hamburger Menu */
-  @media (max-width: 1366px) {
-    /* Hide large screen menu */
     .lg\:flex {
-      display: none;
+      display: flex;
     }
 
-    #menu-toggle {
-      display: block; /* Show the hamburger menu button */
+    @media (max-width: 1366px) {
+      .lg\:flex {
+        display: none;
+      }
     }
 
+    /* Mobile and iPad Menu */
     .mobile-menu {
       display: none;
       position: fixed;
@@ -84,11 +77,11 @@
       right: 0;
       height: 100%;
       width: 75%;
-      background-color: rgba(0, 0, 0, 0.9); /* Dark background for better contrast */
+      background-color: rgba(0, 0, 0, 0.9);
       padding: 1rem;
       text-align: center;
       transform: translateX(100%);
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: transform 0.5s ease, opacity 0.3s ease;
       opacity: 0;
     }
 
@@ -103,69 +96,106 @@
       text-decoration: none;
       display: block;
       padding: 1rem 0;
+      transition: transform 0.3s ease-in-out;
     }
 
     .mobile-menu a:hover {
       color: #ffd700;
     }
-  }
 
-    /* Hamburger button */
+    /* Hamburger button (visible on mobile and iPad only) */
     #menu-toggle {
-      position: absolute;
-      right: 1rem;
-      top: 1rem;
+      display: block;
+      position: fixed;
+      top: 20px;
+      right: 20px;
       z-index: 60;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
-    #menu-toggle svg {
-      width: 2rem;
-      height: 2rem;
+    /* Circle around hamburger menu icon */
+    #menu-toggle.scrolled {
+      background-color: black;
+      border-radius: 50%;
+      padding: 12px;  /* Increased padding for the circle effect */
+      transform: rotate(360deg);
     }
 
-    @media (max-width: 768px) {
-    nav {
-      padding: 2.0rem 1rem; /* Adjust as needed */
-    }
-    }
-
-    .fade-in {
-    animation: fadeIn 0.5s ease-in-out;
+    #hamburger-icon,
+    #close-icon {
+      z-index: 70; /* Ensure icons are above the background circle */
+      transition: transform 0.3s ease;
     }
 
-    @keyframes fadeIn {
-      from {
-      opacity: 0;
-      transform: translateX(100%); /* Start off the screen to the right */
+    /* Show hamburger menu on iPad and smaller devices */
+    @media (max-width: 1024px) {
+      #menu-toggle {
+        display: block;
+      }
     }
-    to {
-      opacity: 1;
-      transform: translateX(0); /* End at its original position */
+
+    /* Hide hamburger button on desktop and larger screens */
+    @media (min-width: 1025px) {
+      #menu-toggle {
+        display: none; /* Hide hamburger menu on desktop and above */
+      }
     }
-    } 
+
+    /* Close button (X) styling */
+    .close-menu {
+      display: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
     /* Countdown Timer Styling */
     #countdown {
       font-family: 'Waterfall', cursive;
-      white-space: nowrap; /* Ensure the text stays on one line */
-      overflow: hidden; /* Hide any overflowing text */
-      text-overflow: ellipsis; /* Display ellipsis for overflowing text */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       text-align: center;
     }
 
-    /* Adjust font size for smaller screens */
     @media (max-width: 768px) {
       #countdown {
-        font-size: 2rem; /* Reduce font size for mobile */
+        font-size: 2rem;
       }
     }
 
     @media (max-width: 480px) {
       #countdown {
-        font-size: 1.5rem; /* Further reduce for very small screens */
+        font-size: 1.5rem;
       }
     }
 
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero-bg {
+        background-position: top;
+      }
+
+      .hero-overlay {
+        padding: 2rem;
+      }
+
+      h1 {
+        font-size: 6rem;
+      }
+
+      #countdown {
+        font-size: 3rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -173,7 +203,6 @@
   <!-- Navbar -->
   <nav id="navbar">
     <div class="container mx-auto flex justify-center">
-
       <!-- Menu for larger screens -->
       <div class="hidden lg:flex space-x-8">
         <a href="#Our-Story">Our Story</a>
@@ -186,123 +215,135 @@
         <a href="#Q-and-a">Q & A</a>
       </div>
 
-    <!-- Hamburger for iPad Pro and smaller -->
-    <button id="menu-toggle" class="text-white focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-      </svg>
-    </button>
-  </div>
+      <!-- Hamburger for mobile and iPad only -->
+      <button id="menu-toggle" class="text-white focus:outline-none">
+        <!-- Hamburger Icon -->
+        <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+        <!-- Close (X) Icon -->
+        <svg id="close-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
 
-     <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden bg-gray-800 p-4 space-y-4 text-center text-white">
-    <a href="#Our-Story" class="block">Our Story</a>
-    <a href="#RSVP" class="block">RSVP</a>
-    <a href="#Gallery" class="block">Gallery</a>
-    <a href="#Ceremony-and-reception" class="block">Ceremony & Reception</a>
-    <a href="#Wedding-party" class="block">Wedding Party</a>
-    <a href="#Travel" class="block">Travel</a>
-    <a href="#Gift-registry" class="block">Gift Registry</a>
-    <a href="#Q-and-a" class="block">Q & A</a>
-  </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <button class="close-menu" id="close-menu">×</button> <!-- Close button -->
+      <a href="#Our-Story" class="block">Our Story</a>
+      <a href="RSVP Form copy.html" class="block">RSVP</a>
+      <a href="#Gallery" class="block">Gallery</a>
+      <a href="#Ceremony-and-reception" class="block">Ceremony & Reception</a>
+      <a href="#Wedding-party" class="block">Wedding Party</a>
+      <a href="#Travel" class="block">Travel</a>
+      <a href="#Gift-registry" class="block">Gift Registry</a>
+      <a href="#Q-and-a" class="block">Q & A</a>
+    </div>
   </nav>
 
-<!-- Hero Section -->
-<section id="home" class="hero-bg flex items-center justify-center text-center text-white">
-  <div class="hero-overlay flex items-center justify-center w-full h-full">
-    <div 
-      class="p-10 sm:p-12 md:p-20 bg-opacity-0 rounded-lg text-center flex flex-col items-center justify-center">
-      <h1 class="text-8xl sm:text-9xl md:text-10xl font-bold mb-4 typing whitespace-normal" 
-          style="font-family: 'Waterfall', cursive;">
-        Dennies & Kassidy
-      </h1>
-      <!-- Countdown Timer -->
-      <div id="countdown" 
-           class="text-4xl sm:text-5xl md:text-6xl mt-4 text-center" 
-           style="font-family: 'Waterfall', cursive; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-        Loading countdown...
+  <!-- Hero Section -->
+  <section id="home" class="hero-bg flex items-center justify-center text-center text-white">
+    <div class="hero-overlay flex items-center justify-center w-full h-full">
+      <div class="p-10 sm:p-12 md:p-20 bg-opacity-0 rounded-lg text-center flex flex-col items-center justify-center">
+        <h1 class="text-8xl sm:text-9xl md:text-10xl font-bold mb-4 typing whitespace-normal" style="font-family: 'Waterfall', cursive;">
+          Dennies & Kassidy
+        </h1>
+        <!-- Countdown Timer -->
+        <div id="countdown" class="text-4xl sm:text-5xl md:text-6xl mt-4 text-center" style="font-family: 'Waterfall', cursive; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          Loading countdown...
+        </div>
+        <!-- Button -->
+        <div class="flex justify-center lg:justify-start mt-6">
+          <a href="RSVP Form copy.html" class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black font-sans">
+            RSVP
+          </a>
+        </div>      
       </div>
-      <!-- Button -->
-      <div class="flex justify-center lg:justify-start mt-6">
-        <a href="RSVP Form copy.html" 
-           class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black font-sans">
-          RSVP
-        </a>
-      </div>      
     </div>
-  </div>
-</section>
+  </section>
 
-<script>
-  // Countdown Function
-  function startCountdown() {
-    const weddingDate = new Date('2025-11-22T00:00:00').getTime();
-    const countdownElement = document.getElementById('countdown');
+  <script>
+    // Countdown Function
+    function startCountdown() {
+      const weddingDate = new Date('2025-11-22T00:00:00').getTime();
+      const countdownElement = document.getElementById('countdown');
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const timeLeft = weddingDate - now;
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const timeLeft = weddingDate - now;
 
-      if (timeLeft <= 0) {
-        countdownElement.innerHTML = "The day is here!";
-        clearInterval(countdownInterval);
-        return;
+        if (timeLeft <= 0) {
+          countdownElement.innerHTML = "It's time!";
+          return;
+        }
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
       }
 
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-      countdownElement.innerHTML = `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
+      setInterval(updateCountdown, 1000);
     }
 
-    const countdownInterval = setInterval(updateCountdown, 1000);
-    updateCountdown();
-  }
+    // Start Countdown
+    window.onload = startCountdown;
 
-  // Start the countdown
-  document.addEventListener('DOMContentLoaded', startCountdown);
-</script>
-
-
-  <!-- JavaScript for mobile menu toggle and navbar scroll effect -->
-  <script>
-    // Mobile menu toggle
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-      var menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('open');
+    // Toggle Mobile Menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenu = document.getElementById('close-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      // Toggle visibility of icons with transitions
+      hamburgerIcon.style.transform = mobileMenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+      closeIcon.style.display = mobileMenu.classList.contains('open') ? 'block' : 'none';
     });
 
-    // Change navbar behavior on scroll
-    window.addEventListener('scroll', function () {
-      var navbar = document.getElementById('navbar');
-      var heroSection = document.querySelector('.hero-bg');
-      var heroBottom = heroSection.offsetHeight;
+    closeMenu.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      // Show hamburger icon when menu is closed with smooth transition
+      hamburgerIcon.style.transform = 'rotate(0deg)';
+      closeIcon.style.display = 'none';
+    });
 
-      if (window.scrollY < heroBottom) {
-        navbar.classList.remove('scrolled');
-      } else {
-        navbar.classList.add('scrolled');
+    // Close menu if clicking outside the menu area
+    window.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+        hamburgerIcon.style.transform = 'rotate(0deg)';
+        closeIcon.style.display = 'none';
       }
     });
 
-     // Mobile menu toggle with fade-in animation
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    menuToggle.addEventListener('click', function () {
-      if (mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.remove('hidden');
-        mobileMenu.classList.add('fade-in');
+    // Sticky Navbar functionality
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const menuToggle = document.getElementById('menu-toggle');
+      
+      if (window.scrollY > 0 && window.innerWidth <= 768) {
+        menuToggle.classList.add('scrolled');
       } else {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('fade-in');
+        menuToggle.classList.remove('scrolled');
+      }
+
+      if (window.scrollY > 0 && window.innerWidth > 768) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
       }
     });
   </script>
 </body>
 </html>
+
 
 <!-- Our Story Section -->
 <section id="Our-Story" class="py-16 bg-gray-200">
