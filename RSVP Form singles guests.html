@@ -66,6 +66,9 @@
         .checkbox-container {
             margin-bottom: 20px;
         }
+
+
+
     </style>
 </head>
 <body>
@@ -93,23 +96,23 @@
             </select>
 
             <label for="dietary">Please provide any dietary restrictions or allergies</label>
-            <textarea id="dietary" name="dietary" placeholder="Enter details"></textarea>
+            <textarea id="dietary" name="dietary" placeholder="Enter details" readonly></textarea>
 
             <label for="comments">Any comments, questions, or concerns?</label>
-            <textarea id="comments" name="comments" placeholder="Enter details"></textarea>
+            <textarea id="comments" name="comments" placeholder="Enter details" readonly></textarea>
             
             <label>
-                <input type="checkbox" id="bringGuest" name="bringGuest" checked> Will you be bringing a guest?
+                <input type="checkbox" id="bringGuest" name="bringGuest"> Will you be bringing a guest?
             </label>
 
             <!-- Guest Name Section -->
-            <div id="guestField" class="guest-field">
+            <div class="guest-field">
                 <label for="guestName" class="guest-label">Guest's Name</label>
                 <input type="text" id="guestName" name="guestName" placeholder="Enter your guest's name">
             </div>
 
             <!-- Entree Section -->
-            <div id="entreeField" class="entree-field">
+            <div class="entree-field">
                 <label for="entree">Please Select your Entree</label>
                 <select id="entree" name="entree" required>
                     <option value="">Select an entree</option>
@@ -119,13 +122,13 @@
             </div>
 
             <!-- Dietary Restrictions Section -->
-            <div id="dietaryField" class="dietary-field">
+            <div class="dietary-field">
                 <label for="dietary">Please provide any dietary restrictions or allergies</label>
                 <textarea id="dietary" name="dietary" placeholder="Enter details"></textarea>
             </div>
 
             <!-- Comments Section -->
-            <div id="commentsField" class="comments-field">
+            <div class="comments-field">
                 <label for="comments">Any comments, questions, or concerns?</label>
                 <textarea id="comments" name="comments" placeholder="Enter details"></textarea>
             </div>
@@ -136,5 +139,14 @@
             </div>
         </form>
     </div>
+
+    <script>
+        // Retrieve the name from the query string
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        if (name) {
+            document.getElementById('name').value = name; // Set the name field value
+        }
+    </script>
 </body>
 </html>
