@@ -96,7 +96,7 @@
             </select>
         
             <label for="entree">Please Select your Entree</label>
-            <select id="entree" name="entree" required>
+            <select id="entree" name="entree">
                 <option value="">Select an entree</option>
                 <option value="Fish">Fish</option>
                 <option value="Steak">Steak</option>
@@ -120,7 +120,7 @@
             <!-- Entree Section -->
             <div id="entreeField" class="entree-field">
                 <label for="entree">Please Select your Entree</label>
-                <select id="entree" name="entree" required>
+                <select id="entree" name="entree">
                     <option value="">Select an entree</option>
                     <option value="Fish">Fish</option>
                     <option value="Steak">Steak</option>
@@ -179,11 +179,25 @@
         document.getElementById("rsvpFormSinglesGuests").addEventListener("submit", function (e) {
             e.preventDefault();
 
+            // Collect all the values, even hidden ones
+            const formData = new FormData(this);
+
+            // Check if the guest checkbox is checked and include the guest info
             const guestInfo = bringGuestCheckbox.checked
                 ? `Guest's Name: ${document.getElementById("guestName").value.trim()}`
                 : "No guest is being brought.";
 
-            alert(`RSVP Submitted\nName: ${name}\n${guestInfo}`);
+            const entree = formData.get("entree");
+            const dietary = formData.get("dietary");
+            const comments = formData.get("comments");
+
+            // Display the values in an alert
+            let message = `RSVP Submitted\nName: ${name}\nAttendance: ${formData.get("attendance")}\n${guestInfo}`;
+            if (entree) message += `\nEntree: ${entree}`;
+            if (dietary) message += `\nDietary Restrictions: ${dietary}`;
+            if (comments) message += `\nComments: ${comments}`;
+
+            alert(message);
         });
     </script>
 </body>
