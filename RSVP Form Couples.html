@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSVP Form for Multiple Guests</title>
+    <title>RSVP Form for Guests</title>
     <style>
         /* General Styling */
         body {
@@ -12,8 +12,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0;
             height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden; /* Prevent body from scrolling */
         }
 
         .container {
@@ -21,30 +23,27 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            width: 100%;
-            max-width: 600px;
-            max-height: 90vh;
-            background-color: rgba(255, 255, 255, 0.85);
+            width: 80%;  /* Increased width to make form larger */
+            max-width: 700px; /* Max width for larger screens */
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent background */
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            overflow-y: auto; /* Add vertical scroll for the container */
+            padding: 25px;
+            max-height: 90vh; /* Set a max height for the form */
+            overflow-y: auto; /* Enable vertical scrolling if content overflows */
         }
 
         h1 {
-            font-size: 1.8rem;
+            font-size: 2rem;  /* Increased font size for better readability */
             color: #333;
             text-align: center;
             margin-bottom: 20px;
         }
 
-        .guest-form {
-            width: 100%;
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #f9f9f9;
+        h2 {
+            font-size: 1.5rem; /* Adjusted sub-heading font size */
+            color: #333;
+            margin-bottom: 15px;
         }
 
         label {
@@ -55,31 +54,35 @@
             display: block;
         }
 
+        /* Input Styling */
         input, select, textarea {
             width: 100%;
-            padding: 12px;
-            font-size: 1rem;
-            margin-bottom: 15px;
+            padding: 14px; /* Increased padding for better spacing */
+            font-size: 1.1rem; /* Larger text for input fields */
+            margin-bottom: 18px; /* Increased margin for better spacing */
             border: 2px solid #ccc;
             border-radius: 8px;
-            background-color: #fff;
+            background-color: #f9f9f9;
             transition: border-color 0.3s ease-in-out;
         }
 
+        /* Focus Styles */
         input:focus, select:focus, textarea:focus {
             border-color: #0073e6;
             outline: none;
         }
 
+        /* Textarea styling */
         textarea {
-            height: 100px;
+            height: 150px; /* Increased height for better space */
             resize: vertical;
         }
 
+        /* Button Styling */
         button {
             width: 100%;
-            padding: 14px;
-            font-size: 1.1rem;
+            padding: 16px;
+            font-size: 1.2rem; /* Larger text on the button */
             color: white;
             background-color: #0073e6;
             border: none;
@@ -95,64 +98,78 @@
 </head>
 <body>
     <div class="container">
-        <form id="rsvpFormCouples" name="rsvpFormCouples" method="POST" data-netlify="true">
+        <form id="rsvpForm" name="rsvpForm" method="POST" data-netlify="true">
             <h1>RSVP Form</h1>
-            <input type="hidden" name="form-name" value="rsvpFormCouples">
+            <!-- Hidden Input for Form Identification -->
+            <input type="hidden" name="form-name" value="rsvpForm">
 
-            <!-- Dynamic Guest Sections -->
-            <div id="guestFormsContainer"></div>
+            <!-- Guest 1 Questions -->
+            <h2>Guest 1</h2>
+            <label for="guest1-name">Guest 1 Name</label>
+            <input type="text" id="guest1-name" name="guest1-name" placeholder="Guest 1 Name" required>
 
+            <label for="guest1-attendance">Will Guest 1 be attending this event?</label>
+            <select id="guest1-attendance" name="guest1-attendance" required>
+                <option value="">Select an option</option>
+                <option value="Attending">Attending</option>
+                <option value="Not Attending">Not Attending</option>
+            </select>
+
+            <label for="guest1-entree">Please Select Guest 1's Entree</label>
+            <select id="guest1-entree" name="guest1-entree" required>
+                <option value="">Select an entree</option>
+                <option value="Fish">Fish</option>
+                <option value="Steak">Steak</option>
+            </select>
+
+            <label for="guest1-dietary">Guest 1's Dietary Restrictions or Allergies</label>
+            <textarea id="guest1-dietary" name="guest1-dietary" placeholder="Enter details"></textarea>
+
+            <label for="guest1-comments">Guest 1's Comments, Questions, or Concerns</label>
+            <textarea id="guest1-comments" name="guest1-comments" placeholder="Enter details"></textarea>
+
+            <!-- Guest 2 Questions -->
+            <h2>Guest 2</h2>
+            <label for="guest2-name">Guest 2 Name</label>
+            <input type="text" id="guest2-name" name="guest2-name" placeholder="Guest 2 Name" required>
+
+            <label for="guest2-attendance">Will Guest 2 be attending this event?</label>
+            <select id="guest2-attendance" name="guest2-attendance" required>
+                <option value="">Select an option</option>
+                <option value="Attending">Attending</option>
+                <option value="Not Attending">Not Attending</option>
+            </select>
+
+            <label for="guest2-entree">Please Select Guest 2's Entree</label>
+            <select id="guest2-entree" name="guest2-entree" required>
+                <option value="">Select an entree</option>
+                <option value="Fish">Fish</option>
+                <option value="Steak">Steak</option>
+            </select>
+
+            <label for="guest2-dietary">Guest 2's Dietary Restrictions or Allergies</label>
+            <textarea id="guest2-dietary" name="guest2-dietary" placeholder="Enter details"></textarea>
+
+            <label for="guest2-comments">Guest 2's Comments, Questions, or Concerns</label>
+            <textarea id="guest2-comments" name="guest2-comments" placeholder="Enter details"></textarea>
+
+            <!-- Submit Button -->
             <button type="submit">Submit RSVP</button>
         </form>
     </div>
 
     <script>
-        // Retrieve the name from the query string
+        // Retrieve the names from the query string
         const urlParams = new URLSearchParams(window.location.search);
-        const names = urlParams.get('name');
+        const fullName = urlParams.get('name');
 
-        if (names) {
-            // Split the names by '&'
-            const guestNames = names.split('&');
-            const container = document.getElementById('guestFormsContainer');
-
-            // Generate form fields for each guest
-            guestNames.forEach((guestName, index) => {
-                const fullName = guestName.trim(); // Retain both first and last names as-is
-                const guestDiv = document.createElement('div');
-                guestDiv.classList.add('guest-form');
-
-                guestDiv.innerHTML = `
-                    <h2>Guest ${index + 1}: ${fullName}</h2>
-
-                    <label for="name_${index}">Name</label>
-                    <input type="text" id="name_${index}" name="guest[${index}][name]" value="${fullName}" readonly required>
-
-                    <label for="attendance_${index}">Will you be attending this event?</label>
-                    <select id="attendance_${index}" name="guest[${index}][attendance]" required>
-                        <option value="">Select an option</option>
-                        <option value="Attending">Attending</option>
-                        <option value="Not Attending">Not Attending</option>
-                    </select>
-
-                    <label for="entree_${index}">Please Select your Entree</label>
-                    <select id="entree_${index}" name="guest[${index}][entree]" required>
-                        <option value="">Select an entree</option>
-                        <option value="Fish">Fish</option>
-                        <option value="Steak">Steak</option>
-                    </select>
-
-                    <label for="dietary_${index}">Please provide any dietary restrictions or allergies</label>
-                    <textarea id="dietary_${index}" name="guest[${index}][dietary]" placeholder="Enter details"></textarea>
-
-                    <label for="comments_${index}">Any comments, questions, or concerns?</label>
-                    <textarea id="comments_${index}" name="guest[${index}][comments]" placeholder="Enter details"></textarea>
-                `;
-
-                container.appendChild(guestDiv);
-            });
-        } else {
-            document.body.innerHTML = '<p style="color: white; font-size: 1.5rem;">No guest names found in the query string.</p>';
+        if (fullName) {
+            // Split the names using ampersand (&) as the delimiter
+            const names = fullName.split('&');
+            
+            // Assign the first name to Guest 1 and the second name to Guest 2
+            document.getElementById('guest1-name').value = names[0] || '';
+            document.getElementById('guest2-name').value = names[1] || '';
         }
     </script>
 </body>
