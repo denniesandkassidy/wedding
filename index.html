@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
 
   <!-- Optional: Include a favicon.ico for legacy browsers -->
-  <link rel="icon" href="favicon.ico" sizes="any">  
+  <link rel="icon" href="favicon.ico" sizes="any">   
   <link href="output.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Waterfall&display=swap" rel="stylesheet">
   <style>
@@ -189,13 +189,13 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 637) {
   #countdown {
     font-size: 4rem; /* Even larger font size for small mobile screens */
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 638) and (max-width: 1024px) {
   .hero-bg {
     background-position: top;
   }
@@ -220,7 +220,7 @@
   <nav id="navbar">
     <div class="container mx-auto flex justify-center">
       <!-- Menu for larger screens -->
-      <div class="hidden lg:flex space-x-8">
+      <div class="hidden lg:flex space-x-8 text-sm">
         <a href="#Our-Story">Our Story</a>
         <a href="RSVP Form copy.html">RSVP</a>
         <a href="#Gallery">Gallery</a>
@@ -346,13 +346,13 @@
       const hamburgerIcon = document.getElementById('hamburger-icon');
       const menuToggle = document.getElementById('menu-toggle');
       
-      if (window.scrollY > 0 && window.innerWidth <= 768) {
+      if (window.scrollY > 0 && window.innerWidth <= 638) {
         menuToggle.classList.add('scrolled');
       } else {
         menuToggle.classList.remove('scrolled');
       }
 
-      if (window.scrollY > 0 && window.innerWidth > 768) {
+      if (window.scrollY > 0 && window.innerWidth > 638) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
