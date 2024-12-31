@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dennies & Kassidy's RSVP</title>
+    <!-- Basic Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+    <!-- Apple Touch Icon (for iPhones and iPads) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Android Icon (for Chrome on Android) -->
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+
+    <!-- Web App Manifest Icon -->
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+
+    <!-- Optional: Include a favicon.ico for legacy browsers -->
+    <link rel="icon" href="favicon.ico" sizes="any">   
+    <link href="output.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Waterfall&display=swap" rel="stylesheet">
     <style>
         /* General Styling */
         body {
@@ -141,69 +158,75 @@
         
         // List of valid names for couples
         const validNames2 = ["John Rody & Amanda Tallon", "Loki & Oliver", "Dennies & Kassidy"];
-
+    
         // List of valid names for singles with guests
         const validNames3 = ["Timmy Parks", "Nick Udris"];
-
+    
         // Helper function to find similar matches
         function findSimilarNames(input, names) {
             const lowerInput = input.toLowerCase();
             return names.filter(name => name.toLowerCase().includes(lowerInput));
         }
-
+    
         // Redirect to RSVP Form Singles.html if name matches validNames
         function redirectToRSVPSingles(name) {
             window.location.href = "RSVP Form Singles.html?name=" + encodeURIComponent(name);
         }
-
+    
         // Redirect to RSVP Form Singles Guests.html if name matches validNames3
         function redirectToRSVPSinglesGuests(name) {
             window.location.href = "RSVP Form Singles Guests.html?name=" + encodeURIComponent(name);
         }
-
+    
         // Redirect to RSVP Form Couples.html if name matches validNames2
         function redirectToRSVPCouples(name) {
             window.location.href = "RSVP Form Couples.html?name=" + encodeURIComponent(name);
         }
-
+    
         // Form submit event handler
         document.getElementById("nameForm").addEventListener("submit", function (e) {
             e.preventDefault();
-
+    
             const nameInput = document.getElementById("name").value.trim();
             const errorElement = document.getElementById("error");
             const suggestionsElement = document.getElementById("suggestions");
             const matchButtonsElement = document.getElementById("matchButtons");
-
+    
             errorElement.textContent = "";
             suggestionsElement.textContent = "";
             matchButtonsElement.innerHTML = "";
-
+    
+            // Validate that the name is at least 3 characters long
+            if (nameInput.length < 3) {
+                errorElement.textContent = "Please enter at least 3 letters.";
+                return;
+            }
+    
             // Check if the name is in validNames
             if (validNames.includes(nameInput)) {
                 console.log("Redirecting to RSVP Form Singles...");
                 redirectToRSVPSingles(nameInput);
                 return;
             }
-
+    
             // Check if the name is in validNames2
             if (validNames2.includes(nameInput)) {
                 console.log("Redirecting to RSVP Form Couples...");
                 redirectToRSVPCouples(nameInput);
                 return;
             }
-
+    
             // Check if the name is in validNames3
             if (validNames3.includes(nameInput)) {
                 console.log("Redirecting to RSVP Form Singles Guests...");
                 redirectToRSVPSinglesGuests(nameInput);
                 return;
             }
-
+    
             const matches = findSimilarNames(nameInput, validNames.concat(validNames2).concat(validNames3));
             
             console.log("Matching names:", matches);
-
+    
             if (matches.length > 0) {
                 suggestionsElement.textContent = "Did you mean one of these?";
                 matches.forEach(match => {
@@ -229,6 +252,8 @@
                 errorElement.textContent = "No match found. Please make sure your name is spelled correctly.";
             }
         });
-    </script>
+        
+    </script>    
 </body>
 </html>
+
