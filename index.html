@@ -159,43 +159,45 @@
     }
 
     /* Countdown Timer Styling */
-    #countdown {
-      font-family: 'Waterfall', cursive;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-align: center;
-    }
+    /* Countdown Timer Styling */
+#countdown {
+  font-family: 'Waterfall', cursive;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
 
-    @media (max-width: 768px) {
-      #countdown {
-        font-size: 2rem;
-      }
-    }
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  #countdown {
+    font-size: 3rem; /* Larger font size for mobile */
+  }
+}
 
-    @media (max-width: 480px) {
-      #countdown {
-        font-size: 1.5rem;
-      }
-    }
+@media (max-width: 480px) {
+  #countdown {
+    font-size: 4rem; /* Even larger font size for small mobile screens */
+  }
+}
 
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .hero-bg {
-        background-position: top;
-      }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-bg {
+    background-position: top;
+  }
 
-      .hero-overlay {
-        padding: 2rem;
-      }
+  .hero-overlay {
+    padding: 2rem;
+  }
 
-      h1 {
-        font-size: 6rem;
-      }
+  h1 {
+    font-size: 6rem;
+  }
 
-      #countdown {
-        font-size: 3rem;
-      }
-    }
+  #countdown {
+    font-size: 3rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -213,6 +215,7 @@
         <a href="#Travel">Travel</a>
         <a href="#Gift-registry">Gift Registry</a>
         <a href="#Q-and-a">Q & A</a>
+        <a href="#Random Thoughts">Random Thoughts</a>
       </div>
 
       <!-- Hamburger for mobile and iPad only -->
@@ -239,6 +242,7 @@
       <a href="#Travel" class="block">Travel</a>
       <a href="#Gift-registry" class="block">Gift Registry</a>
       <a href="#Q-and-a" class="block">Q & A</a>
+      <a href="#Random Thoughts">Random Thoughts</a>
     </div>
   </nav>
 
@@ -536,28 +540,121 @@
 <!-- Wedding Party Section -->
 <section id="Wedding-party" class="py-16 bg-gray-200">
   <div class="container mx-auto px-4">
-    <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Wedding Party</h2>
+    <h2 class="text-8xl font-bold text-center mb-12" style="font-family: 'Waterfall', cursive;">Wedding Party</h2>
 
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+      <!-- Lauren Hawkins -->
+      <div class="text-center">
+        <div class="inline-block">
+          <img src="https://via.placeholder.com/100" alt="Person 1" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
+          <h3 class="text-lg font-semibold mb-1">Lauren Hawkins</h3>
+          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Best Man" or "Maid of Honor."</p>
+        </div>
+      </div>
+
+      <!-- John Rody -->
+      <div class="text-center">
+        <div class="inline-block">
+          <img src="https://via.placeholder.com/100" alt="Person 2" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
+          <h3 class="text-lg font-semibold mb-1">John Rody</h3>
+          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
+        </div>
+      </div>
+
+      <!-- Tara Callahan -->
+      <div class="text-center">
+        <div class="inline-block">
+          <img src="https://via.placeholder.com/100" alt="Person 3" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
+          <h3 class="text-lg font-semibold mb-1">Tara Callahan</h3>
+          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
+        </div>
+      </div>
+
+      <!-- Daniel Chung -->
+      <div class="text-center">
+        <div class="inline-block">
+          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
+          <h3 class="text-lg font-semibold mb-1">Daniel Chung</h3>
+          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
+        </div>
+      </div>
+
+      <!-- Sabrina Ramirez -->
+      <div class="text-center">
+        <div class="inline-block">
+          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
+          <h3 class="text-lg font-semibold mb-1">Sabrina Ramirez</h3>
+          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
+        </div>
+      </div>
+
+      <!-- Jason Cook -->
+      <div class="text-center">
+        <div class="inline-block">
+          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
+          <h3 class="text-lg font-semibold mb-1">Jason Cook</h3>
+          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
+        </div>
+      </div>
+
+      <!-- Gabe Angeles -->
+      <div class="text-center">
+        <div class="inline-block">
+          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
+          <h3 class="text-lg font-semibold mb-1">Gabe Angeles</h3>
+          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
+        </div>
+      </div>
+
+      <!-- Chris McBride -->
+      <div class="text-center">
+        <div class="inline-block">
+          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
+          <h3 class="text-lg font-semibold mb-1">Chris McBride</h3>
+          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
+        </div>
+      </div>
+
+      <!-- Kyra Owen -->
+      <div class="text-center">
+        <div class="inline-block">
+          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
+          <h3 class="text-lg font-semibold mb-1">Kyra Owen</h3>
+          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
+        </div>
+      </div>
+
+      <!-- Vinny Alibrandi -->
+      <div class="text-center">
+        <div class="inline-block">
+          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
+          <h3 class="text-lg font-semibold mb-1">Vinny Alibrandi</h3>
+          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+
 
 <!-- Gift Registry Section -->
 <section id="Gift-registry" class="py-16">
   <div class="container mx-auto px-4">
     <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Gift Registry </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8">
       <!-- Picture 1 -->
       <a href="https://www.dennieschung.com/bookshelf" 
          class="flex justify-center items-center px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-600 transition-colors text-center">
         Amazon
       </a>
       <!-- Picture 2 -->
-      <a href="https://www.dennieschung.com/bookshelf" 
+      <a href="https://www.anthropologie.com/registry/listing?registryId=866129489997" 
          class="flex justify-center items-center px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-600 transition-colors text-center">
         Anthropologie
       </a>
       <!-- Picture 3 -->
-      <a href="https://www.dennieschung.com/bookshelf" 
+      <a href="https://www.crateandbarrel.com/gift-registry/kassidy-rumpf/r7239353" 
          class="flex justify-center items-center px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-600 transition-colors text-center">
         Crate & Barrel
       </a>
@@ -570,13 +667,86 @@
 <section id="Q-and-a" class="py-16 bg-gray-200">
   <div class="container mx-auto px-4">
     <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Q&A</h2>
-    <p class="text-lg text-center mb-4">Feel free to reach out through any of the following:</p>
-    <div class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto text-center">
-      <div class="mb-4">
-        <a href="mailto:denniesandkassidy@gmail.com" class="flex items-center text-blue-600 hover:underline">
+    
+    <div class="flex justify-center mt-8">
+      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> <!-- Top card with full width -->
+        <h3 class="text-2xl font-semibold text-center mb-8">Is there transportation to and from the hotel to the ceremony?</h3>
+        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-8">
+      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> 
+        <h3 class="text-2xl font-semibold text-center mb-8">Is there parking at the museum?</h3>
+        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
+      </div>
+    </div>
+    
+    <div class="flex justify-center mt-8">
+      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> 
+        <h3 class="text-2xl font-semibold text-center mb-8">What should we do between the ceremony & reception?</h3>
+        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-8">
+      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> 
+        <h3 class="text-2xl font-semibold text-center mb-8">What's the dresss code?</h3>
+        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-8">
+      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> 
+        <h3 class="text-2xl font-semibold text-center mb-8">Are kids welcome?</h3>
+        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-8">
+      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> 
+        <h3 class="text-2xl font-semibold text-center mb-8">I have a food allergy. Can I make a special request?</h3>
+        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-8"></div>
+      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> 
+        <h3 class="text-2xl font-semibold text-center mb-8">Can I bring a date?</h3>
+        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
+      </div>
+    </div>
+    
+    <div class="flex justify-center mt-8"></div>
+      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8">
+        <h3 class="text-2xl font-semibold text-center mb-8">For any questions, comments, or concerns, feel free to reach out through any of the following:</h3>
+        <a href="mailto:denniesandkassidy@gmail.com" class="flex justify-center items-center text-blue-600 hover:underline">
           <img src="https://img.icons8.com/material-outlined/24/000000/gmail-new.png" alt="Email" class="w-6 h-6 mr-2"/>
-          denniesandkassidy@gmail.com
+          <span>denniesandkassidy@gmail.com</span>
         </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Random Thoughts Section -->
+<section id="Random-Thoughts" class="py-16">
+  <div class="container mx-auto px-4">
+    <!-- Section Title -->
+    <h2 class="text-8xl font-bold text-center mb-12" style="font-family: 'Waterfall', cursive;">Random Thoughts</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8">
+      <!-- Subheading -->
+      <h3 class="text-5xl font-semibold text-center mb-8" style="font-family: 'Waterfall', cursive;">What is the significance behind the date, November 22?</h3>
+
+      <!-- Text Section -->
+      <div class="flex justify-center mt-8">
+        <div class="bg-gray-200 p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto">
+          <p class="text-lg leading-relaxed mb-6 px-8">1. Kassidy's great grandmother's birthday</p>
+          <p class="text-lg leading-relaxed mb-6 px-8">2. It's the title of a book written by one of Dennies's favorite authors, Stephen King, 11/22/63</p>
+          <p class="text-lg leading-relaxed mb-6 px-8">3. In the spirit of getting married at a museum, 11/22 is a very significant day in history (albeit a dark one). It marks the anniversary of JFK's assassination, 11/22/63 (also the central theme of Stephen King's book!)</p>
+          <p class="text-lg leading-relaxed mb-6 px-8">4. Most importantly, we like the numbers!</p>
+        </div>
       </div>
     </div>
   </div>
