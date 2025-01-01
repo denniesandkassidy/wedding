@@ -113,65 +113,70 @@
 <body>
     <div class="container">
         <form id="rsvpFormCouples" name="rsvpFormCouples" method="POST" data-netlify="true">
-            <h1 class="text-8xl sm:text-9xl md:text-10xl font-bold mb-4 typing whitespace-normal" 
-          style="font-family: 'Waterfall', cursive;">Dennies & Kassidy's Wedding RSVP</h1>
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 typing whitespace-normal" style="font-family: 'Waterfall', cursive;">Dennies & Kassidy's Wedding RSVP</h1>
             <!-- Hidden Input for Form Identification -->
             <input type="hidden" name="form-name" value="rsvpFormCouples">
-
+    
             <!-- Guest 1 Questions -->
             <h2>Guest 1</h2>
             <label for="guest1-name">Guest 1 Name</label>
             <input type="text" id="guest1-name" name="guest1-name" placeholder="Guest 1 Name" required readonly>
-
+    
             <label for="guest1-attendance">Will Guest 1 be attending this event?</label>
             <select id="guest1-attendance" name="guest1-attendance" required>
                 <option value="">Select an option</option>
                 <option value="Attending">Attending</option>
                 <option value="Not Attending">Not Attending</option>
             </select>
-
+    
             <label for="guest1-entree">Please Select Guest 1's Entree</label>
             <select id="guest1-entree" name="guest1-entree">
                 <option value="">Select an entree</option>
                 <option value="Fish">Fish</option>
                 <option value="Steak">Steak</option>
             </select>
-
+    
             <label for="guest1-dietary">Guest 1's Dietary Restrictions or Allergies</label>
             <textarea id="guest1-dietary" name="guest1-dietary" placeholder="Enter details"></textarea>
-
+    
             <label for="guest1-comments">Guest 1's Comments, Questions, or Concerns</label>
             <textarea id="guest1-comments" name="guest1-comments" placeholder="Enter details"></textarea>
-
+    
             <!-- Guest 2 Questions -->
             <h2>Guest 2</h2>
             <label for="guest2-name">Guest 2 Name</label>
             <input type="text" id="guest2-name" name="guest2-name" placeholder="Guest 2 Name" required readonly>
-
+    
             <label for="guest2-attendance">Will Guest 2 be attending this event?</label>
             <select id="guest2-attendance" name="guest2-attendance" required>
                 <option value="">Select an option</option>
                 <option value="Attending">Attending</option>
                 <option value="Not Attending">Not Attending</option>
             </select>
-
+    
             <label for="guest2-entree">Please Select Guest 2's Entree</label>
             <select id="guest2-entree" name="guest2-entree">
                 <option value="">Select an entree</option>
                 <option value="Fish">Fish</option>
                 <option value="Steak">Steak</option>
             </select>
-
+    
             <label for="guest2-dietary">Guest 2's Dietary Restrictions or Allergies</label>
             <textarea id="guest2-dietary" name="guest2-dietary" placeholder="Enter details"></textarea>
-
+    
             <label for="guest2-comments">Guest 2's Comments, Questions, or Concerns</label>
             <textarea id="guest2-comments" name="guest2-comments" placeholder="Enter details"></textarea>
-
-            <!-- Submit Button -->
-            <button type="submit">Submit RSVP</button>
+    
+            <!-- Buttons -->
+            <button class="mb-4 px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black" type="submit">
+                Submit RSVP
+            </button>
+            <button class="mb-4 px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black" type="button" onclick="window.location.href='RSVP Form Copy.html'">
+                Previous Page
+            </button>
         </form>
     </div>
+    
 
     <script>
         // Retrieve the names from the query string

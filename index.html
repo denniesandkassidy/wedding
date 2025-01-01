@@ -346,13 +346,13 @@
       const hamburgerIcon = document.getElementById('hamburger-icon');
       const menuToggle = document.getElementById('menu-toggle');
       
-      if (window.scrollY > 0 && window.innerWidth <= 638) {
+      if (window.scrollY > 0 && window.innerWidth <= 1024) {
         menuToggle.classList.add('scrolled');
       } else {
         menuToggle.classList.remove('scrolled');
       }
 
-      if (window.scrollY > 0 && window.innerWidth > 638) {
+      if (window.scrollY > 0 && window.innerWidth > 1024) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
@@ -397,12 +397,21 @@
     <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Gallery</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Picture 1 -->
-      <img src="https://ucarecdn.com/5f912776-093c-46d7-b42f-4eeb912c5ae9/GalleryPhoto1.jpg" alt="Project 1" class="bg-white p-6 rounded-lg shadow-lg block hover:shadow-xl transition-shadow">
+      <img src="https://ucarecdn.com/5f912776-093c-46d7-b42f-4eeb912c5ae9/GalleryPhoto1.jpg" 
+           alt="Project 1" 
+           class="bg-white p-6 rounded-lg shadow-lg block hover:shadow-xl transition-shadow">
+      
       <!-- Picture 2 -->
-      <img src="https://ucarecdn.com/e9a5e2a8-996a-4c23-900d-85043d0a888c/GalleryPhoto2.jpg" alt="Project 2" class="bg-white p-6 rounded-lg shadow-lg block hover:shadow-xl transition-shadow">
+      <img src="https://ucarecdn.com/e9a5e2a8-996a-4c23-900d-85043d0a888c/GalleryPhoto2.jpg" 
+           alt="Project 2" 
+           class="bg-white p-6 rounded-lg shadow-lg block hover:shadow-xl transition-shadow">
+      
       <!-- Picture 3 -->
-      <img src="https://ucarecdn.com/1d47049c-5b56-4782-a454-e14fbdb7fbc8/GalleryPhoto3.jpg" alt="Project 3" class="bg-white p-6 rounded-lg shadow-lg block hover:shadow-xl transition-shadow">
+      <img src="https://ucarecdn.com/1d47049c-5b56-4782-a454-e14fbdb7fbc8/GalleryPhoto3.jpg" 
+           alt="Project 3" 
+           class="bg-white p-6 rounded-lg shadow-lg block hover:shadow-xl transition-shadow">
     </div>
+    
     <!-- Button to navigate to full gallery -->
     <div class="flex justify-center mt-8">
       <a href="https://1drv.ms/a/c/0dd699cfb5e856e0/EuBW6LXPmdYggA2WfwAAAAABPRVHEefkVOQ9R_Kf8tMabA?e=T6ZyJa" 
@@ -412,7 +421,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- Ceremony & Reception Section -->
 <section id="Ceremony-and-reception" class="py-16 bg-gray-200">
@@ -747,21 +755,27 @@
 <section id="Random Thoughts" class="py-16">
   <div class="container mx-auto px-4">
     <!-- Section Title -->
-    <h2 class="text-8xl font-bold text-center mb-12" style="font-family: 'Waterfall', cursive;">Random Thoughts</h2>
+    <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Random Thoughts</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8">
       <!-- Subheading -->
-      <h3 class="text-5xl font-semibold text-center mb-8" style="font-family: 'Waterfall', cursive;">What is the significance behind the date, November 22?</h3>
 
-      <!-- Text Section -->
-      <div class="flex justify-center mt-8">
+      <!-- 11/22 -->
+      <div class="flex justify-center">
         <div class="bg-gray-200 p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto">
-          <p class="text-lg leading-relaxed mb-6 px-8">1. Kassidy's great grandmother's birthday</p>
+          <h3 class="text-5xl font-semibold text-center mb-8" style="font-family: 'Waterfall', cursive;">What is the significance behind the date, November 22?</h3>
+          <p class="text-lg leading-relaxed mb-6 px-8">1. It's Kassidy's great grandmother's birthday!</p>
           <p class="text-lg leading-relaxed mb-6 px-8">2. It's the title of a book written by one of Dennies's favorite authors, Stephen King, 11/22/63</p>
           <p class="text-lg leading-relaxed mb-6 px-8">3. In the spirit of getting married at a museum, 11/22 is a very significant day in history (albeit a dark one). It marks the anniversary of JFK's assassination, 11/22/63 (also the central theme of Stephen King's book!)</p>
           <p class="text-lg leading-relaxed mb-6 px-8">4. Most importantly, we like the numbers!</p>
         </div>
       </div>
+
+      <!-- 11/22 -->
+      <div class="flex justify-center">
+        <div class="bg-gray-200 p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto">
+          <h3 class="text-5xl font-semibold text-center mt-8 mb-8" style="font-family: 'Waterfall', cursive;">What website did you use to build this?</h3>
+          <p class="text-lg leading-relaxed mb-6 px-8">Dennies built it from scratch! We had a look at some of the other websites, and we thought we could do better, and build our own custom features and size everything on the website that way we wanted to.</p>        </div>
     </div>
   </div>
 </section>

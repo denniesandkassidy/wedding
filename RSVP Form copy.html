@@ -141,16 +141,22 @@
 <body>
     <div class="container">
         <form id="nameForm">
-            <h1 class="text-8xl sm:text-9xl md:text-10xl font-bold mb-4 typing whitespace-normal" 
-          style="font-family: 'Waterfall', cursive;">Dennies & Kassidy's Wedding RSVP</h1>
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 typing whitespace-normal" style="font-family: 'Waterfall', cursive;">Dennies & Kassidy's Wedding RSVP</h1>
             <label for="name">Enter Your Name</label>
             <input type="text" id="name" name="name" placeholder="Type your full name" required>
-            <button type="submit">Check RSVP</button>
+            <button class="mb-4 px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black" type="submit">
+                Check RSVP
+            </button>
+            <button class="mb-4 px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black" type="button" onclick="window.location.href='index.html'">
+                Home
+            </button>
             <p class="error" id="error"></p>
             <div class="match-buttons" id="matchButtons"></div>
             <p class="suggestions" id="suggestions"></p>
         </form>
     </div>
+        
+    
 
     <script>
         // List of valid names for singles without guests

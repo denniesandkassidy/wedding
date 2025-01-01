@@ -111,8 +111,7 @@
 <body>
     <div class="container">
         <form id="rsvpFormSingles" name="rsvpFormSingles" method="POST" data-netlify="true">
-            <h1 class="text-8xl sm:text-9xl md:text-10xl font-bold mb-4 typing whitespace-normal" 
-            style="font-family: 'Waterfall', cursive;">Dennies & Kassidy's Wedding RSVP</h1>
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 typing whitespace-normal" style="font-family: 'Waterfall', cursive;">Dennies & Kassidy's Wedding RSVP</h1>
             <!-- Hidden Input for Form Identification -->
             <input type="hidden" name="form-name" value="rsvpFormSingles">
 
@@ -139,7 +138,12 @@
             <label for="comments">Any comments, questions, or concerns?</label>
             <textarea id="comments" name="comments" placeholder="Enter details"></textarea>
 
-            <button type="submit">Submit RSVP</button>
+            <button class="mb-4 px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black" type="submit">
+                Submit RSVP
+            </button>
+            <button class="mb-4 px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black" type="button" onclick="window.location.href='RSVP Form Copy.html'">
+                Previous Page
+            </button>
         </form>
     </div>
 
