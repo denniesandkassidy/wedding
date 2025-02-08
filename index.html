@@ -26,7 +26,9 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      max-width: 100vw;
     }
+
 
     body {
       margin: 0;
@@ -222,13 +224,8 @@
       <!-- Menu for larger screens -->
       <div class="hidden lg:flex space-x-8 text-sm">
         <a href="#Our-Story">Our Story</a>
-        <a href="RSVP Form copy.html">RSVP</a>
         <a href="#Gallery">Gallery</a>
         <a href="#Ceremony-and-reception">Ceremony & Reception</a>
-        <a href="#Wedding-party">Wedding Party</a>
-        <a href="#Travel">Travel</a>
-        <a href="#Gift-registry">Gift Registry</a>
-        <a href="#Q-and-a">Q & A</a>
         <a href="#Random Thoughts">Random Thoughts</a>
       </div>
 
@@ -249,13 +246,8 @@
     <div id="mobile-menu" class="mobile-menu">
       <button class="close-menu" id="close-menu">×</button> <!-- Close button -->
       <a href="#Our-Story" class="block">Our Story</a>
-      <a href="RSVP Form copy.html" class="block">RSVP</a>
       <a href="#Gallery" class="block">Gallery</a>
       <a href="#Ceremony-and-reception" class="block">Ceremony & Reception</a>
-      <a href="#Wedding-party" class="block">Wedding Party</a>
-      <a href="#Travel" class="block">Travel</a>
-      <a href="#Gift-registry" class="block">Gift Registry</a>
-      <a href="#Q-and-a" class="block">Q & A</a>
       <a href="#Random Thoughts">Random Thoughts</a>
     </div>
   </nav>
@@ -270,12 +262,6 @@
         <div id="countdown" class="text-4xl sm:text-5xl md:text-6xl mt-4 text-center" style="font-family: 'Waterfall', cursive; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
           Loading countdown...
         </div>
-        <!-- Button -->
-        <div class="flex justify-center lg:justify-start mt-6">
-          <a href="RSVP Form copy.html" class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black font-sans">
-            RSVP
-          </a>
-        </div>      
       </div>
     </div>
   </section>
@@ -458,7 +444,7 @@
       <div class="w-full lg:w-1/2 text-center lg:text-center" style="font-family: 'Waterfall', cursive;">
         <div class="mx-auto lg:mx-0 lg:max-w-4xl">
           <p class="text-4xl leading-relaxed mb-4">Saturday, November 22, 2025</p>
-          <p class="text-4xl leading-relaxed mb-4">5:00 PM - 11:00 PM</p>
+          <p class="text-4xl leading-relaxed mb-4">6:00 PM - 11:00 PM</p>
           <p class="text-4xl leading-relaxed mb-4">Museum of the American Revolution</p>
           <p class="text-4xl leading-relaxed mb-4">101 S 3rd St, Philadelphia, PA 19106</p>
         </div>
@@ -483,272 +469,6 @@
   </div>
 </section>
 
-
-<!-- Travel Section -->
-<section id="Travel" class="py-16">
-  <div class="container mx-auto px-4">
-    <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Travel</h2>
-    
-    <!-- First Row (Original) -->
-    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
-      <!-- Google Maps Embed -->
-      <div class="w-full lg:w-1/2 flex justify-center">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6117.058533267672!2d-75.15123179130856!3d39.95191799461205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c8851cb77ac7%3A0x4c811646519218c9!2sIndependence%20Park%20Hotel%2C%20BW%20Premier%20Collection!5e0!3m2!1sen!2sus!4v1733197301207!5m2!1sen!2sus" 
-          width="600" 
-          height="450" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade"
-          class="rounded-lg shadow-lg">
-        </iframe>
-      </div>
-      <!-- Text Section -->
-      <div class="w-full lg:w-1/2 text-center lg:text-left" style="font-family: 'Waterfall', cursive;">
-        <div class="mx-auto lg:mx-0 lg:max-w-4xl">
-          <p class="text-6xl leading-relaxed mb-4">Hotel</p>
-          <p class="text-4xl leading-relaxed mb-4">Independence Park Hotel, BW Premier Collection</p>
-          <p class="text-4xl leading-relaxed mb-4">235 Chestnut St, Philadelphia, PA 19106</p>
-        </div>
-        <!-- Button -->
-        <div class="flex justify-center lg:justify-start mt-6">
-          <a href="https://www.bestwestern.com/en_US/book/hotel-rooms.39125.html" 
-             class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-600 transition-colors font-sans">
-            Book Your Stay
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Space Between Rows -->
-    <div class="my-12"></div> <!-- This creates space between the two rows -->
-
-    <!-- Second Row (Duplicate) -->
-    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
-      <!-- Google Maps Embed -->
-      <div class="w-full lg:w-1/2 flex justify-center">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6117.058533267672!2d-75.15123179130856!3d39.95191799461205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c8851cb77ac7%3A0x4c811646519218c9!2sIndependence%20Park%20Hotel%2C%20BW%20Premier%20Collection!5e0!3m2!1sen!2sus!4v1733197301207!5m2!1sen!2sus" 
-          width="600" 
-          height="450" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade"
-          class="rounded-lg shadow-lg">
-        </iframe>
-      </div>
-      <!-- Text Section -->
-      <div class="w-full lg:w-1/2 text-center lg:text-left" style="font-family: 'Waterfall', cursive;">
-        <div class="mx-auto lg:mx-0 lg:max-w-4xl">
-          <p class="text-6xl leading-relaxed mb-4">Hotel</p>
-          <p class="text-4xl leading-relaxed mb-4">Independence Park Hotel, BW Premier Collection</p>
-          <p class="text-4xl leading-relaxed mb-4">235 Chestnut St, Philadelphia, PA 19106</p>
-        </div>
-        <!-- Button -->
-        <div class="flex justify-center lg:justify-start mt-6">
-          <a href="https://www.bestwestern.com/en_US/book/hotel-rooms.39125.html" 
-             class="inline-block px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-600 transition-colors font-sans">
-            Book Your Stay
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Wedding Party Section -->
-<section id="Wedding-party" class="py-16 bg-gray-200">
-  <div class="container mx-auto px-4">
-    <h2 class="text-8xl font-bold text-center mb-12" style="font-family: 'Waterfall', cursive;">Wedding Party</h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-      <!-- Lauren Hawkins -->
-      <div class="text-center">
-        <div class="inline-block">
-          <img src="https://via.placeholder.com/100" alt="Person 1" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
-          <h3 class="text-lg font-semibold mb-1">Lauren Hawkins</h3>
-          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Best Man" or "Maid of Honor."</p>
-        </div>
-      </div>
-
-      <!-- John Rody -->
-      <div class="text-center">
-        <div class="inline-block">
-          <img src="https://via.placeholder.com/100" alt="Person 2" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
-          <h3 class="text-lg font-semibold mb-1">John Rody</h3>
-          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Best Man" or "Maid of Honor."</p>
-        </div>
-      </div>
-
-      <!-- Tara Callahan -->
-      <div class="text-center">
-        <div class="inline-block">
-          <img src="https://via.placeholder.com/100" alt="Person 3" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
-          <h3 class="text-lg font-semibold mb-1">Tara Callahan</h3>
-          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
-        </div>
-      </div>
-
-      <!-- Daniel Chung -->
-      <div class="text-center">
-        <div class="inline-block">
-          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
-          <h3 class="text-lg font-semibold mb-1">Daniel Chung</h3>
-          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
-        </div>
-      </div>
-
-      <!-- Sabrina Ramirez -->
-      <div class="text-center">
-        <div class="inline-block">
-          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
-          <h3 class="text-lg font-semibold mb-1">Sabrina Ramirez</h3>
-          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
-        </div>
-      </div>
-
-      <!-- Jason Cook -->
-      <div class="text-center">
-        <div class="inline-block">
-          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
-          <h3 class="text-lg font-semibold mb-1">Jason Cook</h3>
-          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
-        </div>
-      </div>
-
-      <!-- Gabe Angeles -->
-      <div class="text-center">
-        <div class="inline-block">
-          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
-          <h3 class="text-lg font-semibold mb-1">Gabe Angeles</h3>
-          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
-        </div>
-      </div>
-
-      <!-- Chris McBride -->
-      <div class="text-center">
-        <div class="inline-block">
-          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
-          <h3 class="text-lg font-semibold mb-1">Chris McBride</h3>
-          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
-        </div>
-      </div>
-
-      <!-- Kyra Owen -->
-      <div class="text-center">
-        <div class="inline-block">
-          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
-          <h3 class="text-lg font-semibold mb-1">Kyra Owen</h3>
-          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
-        </div>
-      </div>
-
-      <!-- Vinny Alibrandi -->
-      <div class="text-center">
-        <div class="inline-block">
-          <img src="https://via.placeholder.com/100" alt="Person 4" class="w-full h-1/2 object-cover rounded-full mx-auto mb-2">
-          <h3 class="text-lg font-semibold mb-1">Vinny Alibrandi</h3>
-          <p class="text-gray-700 text-sm max-w-xs mx-auto">This is a short description or role of the wedding party member. For example, "Groomsman" or "Bridesmaid."</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- Gift Registry Section -->
-<section id="Gift-registry" class="py-16">
-  <div class="container mx-auto px-4">
-    <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Gift Registry </h2>
-    <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8">
-      <!-- Picture 1 -->
-      <a href="https://www.dennieschung.com/bookshelf" 
-         class="flex justify-center items-center px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-600 transition-colors text-center">
-        Amazon
-      </a>
-      <!-- Picture 2 -->
-      <a href="https://www.anthropologie.com/registry/listing?registryId=866129489997" 
-         class="flex justify-center items-center px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-600 transition-colors text-center">
-        Anthropologie
-      </a>
-      <!-- Picture 3 -->
-      <a href="https://www.crateandbarrel.com/gift-registry/kassidy-rumpf/r7239353" 
-         class="flex justify-center items-center px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-yellow-600 transition-colors text-center">
-        Crate & Barrel
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- Q&A Section -->
-<section id="Q-and-a" class="py-16 bg-gray-200">
-  <div class="container mx-auto px-4">
-    <h2 class="text-8xl font-bold text-center mb-8" style="font-family: 'Waterfall', cursive;">Q&A</h2>
-    
-    <div class="flex justify-center mt-8">
-      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> <!-- Top card with full width -->
-        <h3 class="text-2xl font-semibold text-center mb-8">Is there transportation to and from the hotel to the ceremony?</h3>
-        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
-      </div>
-    </div>
-
-    <div class="flex justify-center mt-8">
-      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> 
-        <h3 class="text-2xl font-semibold text-center mb-8">Is there parking at the museum?</h3>
-        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
-      </div>
-    </div>
-    
-    <div class="flex justify-center mt-8">
-      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> 
-        <h3 class="text-2xl font-semibold text-center mb-8">What should we do between the ceremony & reception?</h3>
-        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
-      </div>
-    </div>
-
-    <div class="flex justify-center mt-8">
-      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> 
-        <h3 class="text-2xl font-semibold text-center mb-8">What's the dresss code?</h3>
-        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
-      </div>
-    </div>
-
-    <div class="flex justify-center mt-8">
-      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> 
-        <h3 class="text-2xl font-semibold text-center mb-8">Are kids welcome?</h3>
-        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
-      </div>
-    </div>
-
-    <div class="flex justify-center mt-8">
-      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> 
-        <h3 class="text-2xl font-semibold text-center mb-8">I have a food allergy. Can I make a special request?</h3>
-        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
-      </div>
-    </div>
-
-    <div class="flex justify-center mt-8"></div>
-      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8"> 
-        <h3 class="text-2xl font-semibold text-center mb-8">Can I bring a date?</h3>
-        <p class="text-lg leading-relaxed mb-6 px-8">No transportation from the ceremony to the reception is required! Both the ceremony and reception will be held at the Museum.</p>
-      </div>
-    </div>
-    
-    <div class="flex justify-center mt-8"></div>
-      <div class="bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full mx-auto mb-8">
-        <h3 class="text-2xl font-semibold text-center mb-8">For any questions, comments, or concerns, feel free to reach out through any of the following:</h3>
-        <a href="mailto:denniesandkassidy@gmail.com" class="flex justify-center items-center text-blue-600 hover:underline">
-          <img src="https://img.icons8.com/material-outlined/24/000000/gmail-new.png" alt="Email" class="w-6 h-6 mr-2"/>
-          <span>denniesandkassidy@gmail.com</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- Random Thoughts Section -->
 <section id="Random Thoughts" class="py-16">
