@@ -97,14 +97,9 @@
 </head>
 <body>
     <div class="container">
-        <form id="rsvpFormSinglesGuests" name="rsvpFormSinglesGuests" method="POST" data-netlify="true" netlify-honeypot="bot-field" accept-charset="utf-8" action="/">
+        <form id="rsvpFormSinglesGuests" name="rsvpFormSinglesGuests" method="POST" data-netlify="true">
             <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 typing whitespace-normal" style="font-family: 'Waterfall', cursive;">Dennies & Kassidy's Wedding RSVP</h1>
             <input type="hidden" name="form-name" value="rsvpFormSinglesGuests">
-
-              <!-- Honeypot (hidden to humans) -->
-  <p class="hidden" style="display:none;">
-    <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-  </p>
 
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your Name" required readonly>
@@ -117,14 +112,14 @@
             </select>
         
             <label for="entree">Please Select your Entree</label>
-            <select id="entree" name="entree">
+            <select id="entree" name="entree" required>
                 <option value="">Select an entree</option>
                 <option value="Fish">Fish</option>
                 <option value="Steak">Steak</option>
             </select>
 
             <label for="dietary">Please provide any dietary restrictions or allergies</label>
-            <textarea id="dietary" name="dietary" placeholder="Enter details"></textarea>
+            <input type="text" id="dietary" name="dietary" placeholder="Enter Details">
 
             <!-- Guest Name Section -->
             <label for="guest2-name">Guest Name</label>
@@ -138,7 +133,7 @@
             </select>
 
             <label for="guest2-dietary">Guest's Dietary Restrictions or Allergies</label>
-            <textarea id="guest2-dietary" name="guest2-dietary" placeholder="Enter details"></textarea>
+            <input type="text" id="guest2-dietary" name="guest2-dietary" placeholder="Enter Details" required>
             
             <button class="mb-4 px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black" type="submit">
                 Submit RSVP

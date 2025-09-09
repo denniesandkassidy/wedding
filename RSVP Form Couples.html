@@ -130,14 +130,14 @@
             </select>
     
             <label for="guest1-entree">Please Select Guest 1's Entree</label>
-            <select id="guest1-entree" name="guest1-entree">
+            <select id="guest1-entree" name="guest1-entree" required>
                 <option value="">Select an entree</option>
                 <option value="Fish">Fish</option>
                 <option value="Steak">Steak</option>
             </select>
     
             <label for="guest1-dietary">Guest 1's Dietary Restrictions or Allergies</label>
-            <textarea id="guest1-dietary" name="guest1-dietary" placeholder="Enter details"></textarea>
+            <input type="text" id="guest1-dietary" name="guest1-dietary" placeholder="Enter Details">
     
             <!-- Guest 2 Questions -->
             <h2>Guest 2</h2>
@@ -152,14 +152,15 @@
             </select>
     
             <label for="guest2-entree">Please Select Guest 2's Entree</label>
-            <select id="guest2-entree" name="guest2-entree">
+            <select id="guest2-entree" name="guest2-entree" required>
                 <option value="">Select an entree</option>
                 <option value="Fish">Fish</option>
                 <option value="Steak">Steak</option>
             </select>
     
             <label for="guest2-dietary">Guest 2's Dietary Restrictions or Allergies</label>
-            <textarea id="guest2-dietary" name="guest2-dietary" placeholder="Enter details"></textarea>
+            <input type="text" id="guest2-dietary" name="guest2-dietary" placeholder="Enter Details">
+
     
             <!-- Buttons -->
             <button class="mb-4 px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black" type="submit">
