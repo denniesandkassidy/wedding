@@ -24,7 +24,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: url('https://ucarecdn.com/8464631e-8b52-4de3-b2c3-dd1ee0b1bffe/788F221B69F949EC8D3D7BD05F3EC49B.jpg') center center / cover no-repeat;
+            background: url('https://ucarecdn.com/40d14a68-fe9a-4af1-a8dc-bb9a01578455/MuseumWalk.JPG') center center / cover no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -121,9 +121,6 @@
             <label for="dietary">Please provide any dietary restrictions or allergies</label>
             <textarea id="dietary" name="dietary" placeholder="Enter details"></textarea>
 
-            <label for="comments">Any comments, questions, or concerns?</label>
-            <textarea id="comments" name="comments" placeholder="Enter details"></textarea>
-
             <!-- Guest Name Section -->
             <label for="guest2-name">Guest Name</label>
             <input type="text" id="guest2-name" name="guest2-name" placeholder="Leave blank if not bringing a guest">
@@ -137,9 +134,6 @@
 
             <label for="guest2-dietary">Guest's Dietary Restrictions or Allergies</label>
             <textarea id="guest2-dietary" name="guest2-dietary" placeholder="Enter details"></textarea>
-
-            <label for="guest2-comments">Guest's Comments, Questions, or Concerns</label>
-            <textarea id="guest2-comments" name="guest2-comments" placeholder="Enter details"></textarea>
             
             <button class="mb-4 px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black" type="submit">
                 Submit RSVP
@@ -154,9 +148,12 @@
         // Retrieve the name from the query string
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('name');
+      
         if (name) {
-            document.getElementById('name').value = name; // Set the name field value
+          // Take only the part before the ampersand (&)
+          const trimmedName = name.split('&')[0].trim();
+          document.getElementById('name').value = trimmedName;
         }
-    </script>
+      </script>      
 </body>
 </html>
