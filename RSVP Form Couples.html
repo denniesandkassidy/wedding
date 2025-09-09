@@ -187,5 +187,46 @@
             document.getElementById('guest2-name').value = names[1] || '';
         }
     </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      function setupAttendanceToggle(attendanceId, entreeId) {
+        const attendance = document.getElementById(attendanceId);
+        const entree = document.getElementById(entreeId);
+    
+        function update() {
+          const val = attendance.value;
+          if (val === "Attending") {
+            entree.disabled = false;
+            entree.required = true;
+          } else if (val === "Not Attending") {
+            entree.disabled = true;
+            entree.required = false;
+            entree.value = ""; // reset selection
+          } else {
+            // Default (empty option chosen)
+            entree.disabled = false;
+            entree.required = false;
+          }
+        }
+    
+        attendance.addEventListener('change', update);
+        update(); // set on load
+      }
+    
+      // Singles form
+      if (document.getElementById('attendance') && document.getElementById('entree')) {
+        setupAttendanceToggle('attendance', 'entree');
+      }
+    
+      // Couples form (Guest 1 & Guest 2)
+      if (document.getElementById('guest1-attendance') && document.getElementById('guest1-entree')) {
+        setupAttendanceToggle('guest1-attendance', 'guest1-entree');
+      }
+      if (document.getElementById('guest2-attendance') && document.getElementById('guest2-entree')) {
+        setupAttendanceToggle('guest2-attendance', 'guest2-entree');
+      }
+    });
+    </script>
 </body>
 </html>

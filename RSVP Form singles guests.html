@@ -154,6 +154,48 @@
           const trimmedName = name.split('&')[0].trim();
           document.getElementById('name').value = trimmedName;
         }
-      </script>      
+      </script>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const attendance = document.getElementById('attendance');
+          const entree = document.getElementById('entree');
+          const guestEntree = document.getElementById('guest2-entree');
+        
+          function update() {
+            const val = attendance.value;
+        
+            if (val === "Attending") {
+              // Enable and require main guest entree
+              entree.disabled = false;
+              entree.required = true;
+        
+              // Enable guest's entree (optional requirement up to you)
+              guestEntree.disabled = false;
+              guestEntree.required = false; // keep optional unless you want required
+            } else if (val === "Not Attending") {
+              // Disable and clear main guest entree
+              entree.disabled = true;
+              entree.required = false;
+              entree.value = "";
+        
+              // Disable and clear guest's entree too
+              guestEntree.disabled = true;
+              guestEntree.required = false;
+              guestEntree.value = "";
+            } else {
+              // Default (blank select option chosen)
+              entree.disabled = false;
+              entree.required = false;
+              guestEntree.disabled = false;
+              guestEntree.required = false;
+            }
+          }
+        
+          attendance.addEventListener('change', update);
+          update(); // set correct state on load
+        });
+        </script>
+        
 </body>
 </html>
