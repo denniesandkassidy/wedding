@@ -104,6 +104,13 @@
     text-align: center;     /* center text */
     }
 
+    .note {
+    margin-top: 8px;
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    font-style: italic;
+    }
   </style>
 </head>
 <body>
@@ -118,6 +125,11 @@
       <button class="mb-4 px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg transition-all duration-300 hover:bg-yellow-600 hover:text-black" type="submit">
         Find RSVP
       </button>
+
+      <p class="note">
+        *If you RSVP’d in the past 48 hours, your response may not yet be reflected here. 
+        Updates will appear within 48 hours.
+      </p>      
 
       <p class="error" id="error"></p>
       <div class="match-buttons" id="matchButtons"></div>
